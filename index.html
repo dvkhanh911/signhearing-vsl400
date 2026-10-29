@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="{{locale}}">
+<head>{{layout.head}}</head>
+<body>
+<a class="skip-link" href="#main">{{a11y.skip}}</a>
+{{layout.header}}
+<main id="main">
+  <section class="hero section-anchor" id="gioi-thieu" aria-labelledby="hero-title">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow-pill">{{hero.eyebrow}}</p>
+        <p class="chapter-label">{{hero.chapter}}</p>
+        <h1 id="hero-title">{{hero.title.first}}<br><span>{{hero.title.second}}</span></h1>
+        <p class="hero-intro">{{hero.description}}</p>
+        <div class="hero-actions"><a class="button" href="#cau-chuyen">{{action.story}} <span aria-hidden="true">↓</span></a><a class="button button-outline" href="{{url.app}}">{{action.explore}} <span aria-hidden="true">↗</span></a></div>
+        <p class="project-note"><span class="status-dot" aria-hidden="true"></span>{{hero.note}}</p>
+      </div>
+      <div class="hero-art">
+        <div class="blue-blob" aria-hidden="true"></div><span class="art-heart" aria-hidden="true">♥</span><span class="petals petals-one" aria-hidden="true"></span>
+        <img class="hero-mascot" src="/static/assets/mascot.png" alt="{{a11y.mascot}}" width="1351" height="1164" fetchpriority="high">
+        <div class="floating-note"><span aria-hidden="true">♡</span><p>{{hero.floating.first}}<br><strong>{{hero.floating.second}}</strong></p></div>
+        <span class="art-caption">{{hero.caption}}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="vsl-section section-anchor" id="vsl" aria-labelledby="vsl-title">
+    <div class="container vsl-grid">
+      <div class="vsl-copy reveal"><p class="chapter-label">{{vsl.chapter}}</p><h2 id="vsl-title">{{vsl.title}}</h2><p>{{vsl.body}}</p><p class="vsl-language-note">{{vsl.note}}</p></div>
+      <figure class="quote-box reveal"><span class="quote-mark" aria-hidden="true">“</span><blockquote lang="en">{{quote.jordan.text}}</blockquote>{{translation.jordan}}<figcaption><strong>{{quote.jordan.author}}</strong><p>{{quote.jordan.role}}</p><a href="https://www.congress.gov/109/crec/2006/03/28/CREC-2006-03-28.pdf#page=13">{{quote.jordan.source}} ↗</a></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="beginning section-anchor" id="bat-dau" aria-labelledby="beginning-title">
+    <div class="container"><div class="section-heading reveal"><p class="chapter-label">{{beginning.chapter}}</p><h2 id="beginning-title">{{beginning.title}}</h2></div>
+      <div class="beginning-cards">
+        <article class="beginning-card reveal" tabindex="0"><span class="card-icon blue-icon" aria-hidden="true">↗</span><span class="card-number">01</span><h3>{{beginning.one.title}}</h3><p>{{beginning.one.body}}</p></article>
+        <article class="beginning-card reveal" tabindex="0"><span class="card-icon pink-icon" aria-hidden="true">◇</span><span class="card-number">02</span><h3>{{beginning.two.title}}</h3><p>{{beginning.two.body}}</p></article>
+        <article class="beginning-card reveal" tabindex="0"><span class="card-icon sky-icon" aria-hidden="true">♡</span><span class="card-number">03</span><h3>{{beginning.three.title}}</h3><p>{{beginning.three.body}}</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="origin section-anchor" id="cau-chuyen" aria-labelledby="story-title">
+    <div class="container origin-grid">
+      <div class="story-art reveal"><div class="story-image"><span class="story-blob" aria-hidden="true"></span><img src="/static/assets/mascot.png" alt="{{a11y.illustration}}" width="1351" height="1164" loading="lazy"></div><p class="story-illustration-note">{{story.illustration.note}}</p><div class="product-direction"><span class="direction-label">{{story.direction}}</span><ol><li><span aria-hidden="true">01</span>{{story.learn}}</li><li><span aria-hidden="true">02</span>{{story.observe}}</li><li><span aria-hidden="true">03</span>{{story.practice}}</li></ol></div></div>
+      <div class="origin-copy reveal"><p class="chapter-label">{{story.chapter}}</p><h2 id="story-title">{{story.title}}</h2><p>{{story.one}}</p><p>{{story.two}}</p><p class="origin-emphasis">{{story.three}}</p></div>
+    </div>
+  </section>
+
+  <section class="journey section-anchor" id="hanh-trinh" aria-labelledby="journey-title">
+    <div class="container journey-grid">
+      <div class="journey-copy reveal"><p class="chapter-label">{{journey.chapter}}</p><h2 id="journey-title">{{journey.title}}</h2><p>{{journey.body}}</p><div class="planned-framework"><span>{{journey.planned}}</span><div><strong>{{number.modules}}</strong> {{journey.module.label}} <i aria-hidden="true">/</i> <strong>{{number.lessons}}</strong> {{journey.lesson.label}}</div></div><div class="material-note"><span aria-hidden="true">◷</span><strong>{{journey.material.note}}</strong></div></div>
+      <ol class="journey-timeline reveal"><li class="current"><span class="timeline-dot" aria-hidden="true"></span><p class="timeline-state">01</p><h3>{{journey.curriculum.title}}</h3><p>{{journey.curriculum.state}}</p></li><li><span class="timeline-dot" aria-hidden="true"></span><p class="timeline-state">02</p><h3>{{journey.video.title}}</h3><p>{{journey.video.state}}</p></li><li><span class="timeline-dot" aria-hidden="true"></span><p class="timeline-state">03</p><h3>{{journey.practice.title}}</h3><p>{{journey.practice.state}}</p></li></ol>
+    </div>
+  </section>
+
+  <section class="invitation section-anchor" id="dong-hanh" aria-labelledby="together-title"><div class="container">
+    <figure class="together-quote reveal"><blockquote lang="en">“{{quote.keller.text}}”</blockquote>{{translation.keller}}<figcaption><strong>{{quote.keller.author}}</strong><a href="https://www.helenkeller.org/get-involved/">{{quote.keller.source}} ↗</a></figcaption></figure>
+    <div class="invitation-banner reveal"><img src="/static/assets/mascot.png" alt="" width="1351" height="1164" loading="lazy"><div class="invitation-copy"><p class="chapter-label">{{together.chapter}}</p><h2 id="together-title">{{together.title}}</h2><p>{{together.body}}</p>{{layout.contact}}</div><span class="banner-heart" aria-hidden="true">♡</span></div>
+    <p class="quote-context">{{quote.context}}</p>
+  </div></section>
+</main>
+{{layout.footer}}
+</body>
+</html>

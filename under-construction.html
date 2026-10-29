@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="{{locale}}"><head>{{layout.head}}</head>
+<body class="construction-page">
+<a class="skip-link" href="#main">{{a11y.skip}}</a>{{layout.header}}
+<main id="main" class="construction-main"><section class="construction-card" aria-labelledby="construction-title">
+  <div class="construction-art"><span class="construction-halo" aria-hidden="true"></span><img src="/static/assets/mascot.png" alt="{{a11y.mascot}}" width="1351" height="1164"></div>
+  <p class="eyebrow-pill">{{app.eyebrow}}</p><h1 id="construction-title">{{app.title}}</h1><p>{{app.body}}</p><div class="construction-status"><span class="status-dot" aria-hidden="true"></span>{{journey.material.note}}</div><p class="construction-thanks">{{app.thanks}}</p><a class="button" href="{{url.home}}">{{action.home}} <span aria-hidden="true">↗</span></a>
+</section></main>
+{{layout.footer}}
+</body></html>

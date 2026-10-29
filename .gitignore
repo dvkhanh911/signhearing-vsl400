@@ -1,0 +1,52 @@
+__pycache__/
+*.pyc
+.venv/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+.aws/
+.ssh/
+
+# Dependencies, generated outputs and caches
+node_modules/
+venv/
+dist/
+build/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+coverage/
+*.egg-info/
+
+# IDE, OS and temporary files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+.publish/
+
+# Local datasets and model checkpoints
+data/
+datasets/
+checkpoints/
+models/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.h5
+*.safetensors

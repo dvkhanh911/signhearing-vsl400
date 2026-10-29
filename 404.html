@@ -1,0 +1,5 @@
+<!doctype html>
+<html lang="{{locale}}"><head>{{layout.head}}</head><body class="construction-page error-page">
+<a class="skip-link" href="#main">{{a11y.skip}}</a>{{layout.header}}
+<main id="main" class="construction-main"><section class="construction-card" aria-labelledby="error-title"><div class="construction-art"><span class="construction-halo" aria-hidden="true"></span><img src="/static/assets/mascot.png" alt="{{a11y.mascot}}" width="1351" height="1164"></div><p class="eyebrow-pill">{{error.code}} · {{error.eyebrow}}</p><h1 id="error-title">{{error.title}}</h1><p>{{error.body}}</p><a class="button" href="{{url.home}}">{{action.home}} <span aria-hidden="true">↗</span></a></section></main>
+{{layout.footer}}</body></html>

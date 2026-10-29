@@ -1,0 +1,4 @@
+PASS: 297 HTTP/i18n/content checks; 97 matching keys per language.
+Verified: VI/EN SSR, metadata, ARIA, all routes, anchors, asset links, cookies, reload/direct navigation, 404 and missing-contact disclosure.
+Quote sources were verified separately against Congress.gov and Helen Keller Services.
+Browser layout, animations, mobile interaction and screenshots are not covered by HTTP checks.
