@@ -1,0 +1,17 @@
+{
+  "id": "dashboard",
+  "owner": "Codex",
+  "status": "done",
+  "nav": {
+    "order": 1,
+    "icon": "home",
+    "label_key": "dashboard.nav"
+  },
+  "routes": [
+    {
+      "path": "/app",
+      "page": "page.html",
+      "title_key": "dashboard.title"
+    }
+  ]
+}

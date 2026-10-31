@@ -1,0 +1,771 @@
+{
+  "version": "vsl400-framework-draft",
+  "_readme": "Owned by the content lead. Lesson titles 3-18 (null = not entered yet) and all sign lists still have to be copied from the VSL 400 syllabus and reviewed. status: planned | draft | sample | published. 'sample' = UI-development placeholder, only shown when site-config show_sample_content is true. video stays null until an approved video exists.",
+  "modules": [
+    {
+      "id": 1,
+      "slug": "gia-dinh-giao-tiep",
+      "title": {
+        "vi": "Gia đình & giao tiếp nền tảng",
+        "en": "Family & everyday basics"
+      },
+      "lessons": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "thoi-gian-thoi-tiet-le-hoi",
+      "title": {
+        "vi": "Thời gian, thời tiết & lễ hội",
+        "en": "Time, weather & festivals"
+      },
+      "lessons": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "am-thuc-mua-sam",
+      "title": {
+        "vi": "Ẩm thực & mua sắm",
+        "en": "Food & shopping"
+      },
+      "lessons": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "nha-cua-trang-phuc-sinh-hoat",
+      "title": {
+        "vi": "Nhà cửa, trang phục & sinh hoạt",
+        "en": "Home, clothing & daily life"
+      },
+      "lessons": [
+        9,
+        10
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "truong-hoc-cong-viec",
+      "title": {
+        "vi": "Trường học & công việc",
+        "en": "School & work"
+      },
+      "lessons": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "di-lai-dia-diem-quoc-gia",
+      "title": {
+        "vi": "Đi lại, địa điểm & quốc gia",
+        "en": "Travel, places & countries"
+      },
+      "lessons": [
+        13,
+        14
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "suc-khoe-van-dong-giai-tri",
+      "title": {
+        "vi": "Sức khỏe, vận động & giải trí",
+        "en": "Health, sport & leisure"
+      },
+      "lessons": [
+        15,
+        16
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "tinh-cach-cam-xuc-dong-vat",
+      "title": {
+        "vi": "Tính cách, cảm xúc & động vật",
+        "en": "Personality, emotions & animals"
+      },
+      "lessons": [
+        17,
+        18
+      ]
+    }
+  ],
+  "lessons": [
+    {
+      "id": 1,
+      "module": 1,
+      "title": {
+        "vi": "Chào hỏi cơ bản",
+        "en": "Basic greetings"
+      },
+      "status": "sample",
+      "signs": [
+        "xin-chao",
+        "tam-biet",
+        "cam-on",
+        "xin-loi",
+        "toi",
+        "ban",
+        "ten"
+      ]
+    },
+    {
+      "id": 2,
+      "module": 1,
+      "title": {
+        "vi": "Thành viên gia đình",
+        "en": "Family members"
+      },
+      "status": "sample",
+      "signs": [
+        "gia-dinh",
+        "bo",
+        "me",
+        "anh-trai",
+        "chi-gai",
+        "em"
+      ]
+    },
+    {
+      "id": 3,
+      "module": 2,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 4,
+      "module": 2,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 5,
+      "module": 2,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 6,
+      "module": 3,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 7,
+      "module": 3,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 8,
+      "module": 3,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 9,
+      "module": 4,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 10,
+      "module": 4,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 11,
+      "module": 5,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 12,
+      "module": 5,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 13,
+      "module": 6,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 14,
+      "module": 6,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 15,
+      "module": 7,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 16,
+      "module": 7,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 17,
+      "module": 8,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    },
+    {
+      "id": 18,
+      "module": 8,
+      "title": null,
+      "status": "planned",
+      "signs": []
+    }
+  ],
+  "signs": [
+    {
+      "slug": "anh",
+      "word": {
+        "vi": "Anh",
+        "en": "Older brother / male addressee"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/anh.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Anh/000000.mp4",
+        "sha256": "d124b2f15b22b1d1a15fee1667e171ead509963ec98c2176da6b6e96cd581ce2",
+        "web_sha256": "3e5cbe3805e4df925d19bbf91fb063f308308d9b511b6fcf0eef17bd443db866",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "an",
+      "word": {
+        "vi": "Ăn",
+        "en": "Eat"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/an.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Ăn/000734.mp4",
+        "sha256": "07377898668dbcec088003424b125a319d33594ed078fe6c4d20dbf46f4867ce",
+        "web_sha256": "daa1bf4a5c6f85d61c259ff221346a997932c62591730c451ea1125f47358fac",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "am",
+      "word": {
+        "vi": "Ấm",
+        "en": "Warm / kettle"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/am.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Ấm/000579.mp4",
+        "sha256": "afec19a0e42b7dd270efe1ceee23c06828b450b584c24767ac8d3ed155aadd53",
+        "web_sha256": "a9a5eb539f712bd71d27ff79f7b0bedcf482801455f68db94889251c1a500085",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "ao-so-mi",
+      "word": {
+        "vi": "Áo sơ mi",
+        "en": "Shirt"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/ao-so-mi.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Áo sơ mi/000334.mp4",
+        "sha256": "67c6c23ffece6e4f07b5b1e73a17c280a3e5b1164e7cd0466f890c1971c2da4b",
+        "web_sha256": "cf282f561388942eef8948bfca1e752c01b570be481ba3d775e889f0ee28e69e",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "ao-thun",
+      "word": {
+        "vi": "Áo thun",
+        "en": "T-shirt"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/ao-thun.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Áo thun/000326.mp4",
+        "sha256": "ca0d61adb9f999bb9dc97e28a5d40f79ef580ca925ba56e60c3b0769392a0ca8",
+        "web_sha256": "89de776db0e079f02d569db79ffb638c59391f3db4ec2e9074b469a21c343678",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "ao-dam",
+      "word": {
+        "vi": "Áo đầm",
+        "en": "Dress"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/ao-dam.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Áo đầm/000338.mp4",
+        "sha256": "f43e2a72bc95aa7e8187e6cdecdeac7b0a7d138f2f2d2580416137ed200e823b",
+        "web_sha256": "6ecf3417868ca443f4ac20a7ce900f0e677107a6c9b940745d2ceabf8748e17e",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "ba-lo",
+      "word": {
+        "vi": "Ba lô",
+        "en": "Backpack"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/ba-lo.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Ba lô/000300.mp4",
+        "sha256": "c83731bc73a1b16c523eeb505f73e348e5f718bfaf78021afe7224293b74ef85",
+        "web_sha256": "ecbeafed95e4bbff3bc08066ba526faea29da758a9eefba721ebc9d1007cfb54",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "ba-ngoai",
+      "word": {
+        "vi": "Bà ngoại",
+        "en": "Maternal grandmother"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/ba-ngoai.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Bà ngoại/000732.mp4",
+        "sha256": "23c40db38014e84703f5f343f201189e77994330553c4d498da8d40f6a79f82a",
+        "web_sha256": "2863ad719f2ce5f9707e9b8c11c8cfd9b7fcd506c2230377f1eb490ef945a988",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "ba-noi",
+      "word": {
+        "vi": "Bà nội",
+        "en": "Paternal grandmother"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/ba-noi.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Bà nội/000728.mp4",
+        "sha256": "a1c167a95bbd61b447e0c280e16fb5e63c7c391726a1b2c738a48cab907ec6b5",
+        "web_sha256": "fa660fa29f1011dbc43fb1829304506af77f0e74fc5eb187eca7660b973c0edd",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "bac",
+      "word": {
+        "vi": "Bác",
+        "en": "Elder aunt / uncle"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/bac.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Bác/000010.mp4",
+        "sha256": "829d680d7c5c5a9d513e3d1d3a15183a2e764da4205be658689f9511031a5e9e",
+        "web_sha256": "ff28105ee6f867973331c5761dffd1d3cabde2275762c712ca8cfed80c904369",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "bac-si",
+      "word": {
+        "vi": "Bác sĩ",
+        "en": "Doctor"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/bac-si.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Bác sĩ/000365.mp4",
+        "sha256": "7e882962b216e8482249e3f0271c18fabf53d5cca4bc7cb1d4dab7be3cd2f7b8",
+        "web_sha256": "8e061c7c0b9720c5acb278efb48f63ca946cf27dabf93eefd27aafbc5d3e3771",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "ban-ron",
+      "word": {
+        "vi": "Bận",
+        "en": "Busy / occupied"
+      },
+      "meaning": {
+        "vi": "Ngữ cảnh đang chờ rà soát.",
+        "en": "Context pending review."
+      },
+      "lesson": null,
+      "collection": "local-videos",
+      "status": "sample",
+      "video": "/static/media/local-videos/ban-ron.mp4",
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false,
+      "source": {
+        "relative_path": "Bận/000758.mp4",
+        "sha256": "4b54db256364e56c2eca74e78bc9c16f8634bcb87cf0fe707fcb2e038e7288d0",
+        "web_sha256": "9b6cecf4d29d4cc4b48ecbcdf8c4cabfe1bb01aedeabe50f167caa1e8f6a6983",
+        "web_codec": "h264"
+      }
+    },
+    {
+      "slug": "xin-chao",
+      "word": {
+        "vi": "Xin chào",
+        "en": "Hello"
+      },
+      "meaning": {
+        "vi": "Lời chào khi gặp ai đó.",
+        "en": "A greeting when you meet someone."
+      },
+      "lesson": 1,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "tam-biet",
+      "word": {
+        "vi": "Tạm biệt",
+        "en": "Goodbye"
+      },
+      "meaning": {
+        "vi": "Lời chào khi chia tay.",
+        "en": "Said when parting."
+      },
+      "lesson": 1,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "cam-on",
+      "word": {
+        "vi": "Cảm ơn",
+        "en": "Thank you"
+      },
+      "meaning": {
+        "vi": "Bày tỏ sự biết ơn.",
+        "en": "Expressing thanks."
+      },
+      "lesson": 1,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "xin-loi",
+      "word": {
+        "vi": "Xin lỗi",
+        "en": "Sorry"
+      },
+      "meaning": {
+        "vi": "Nhận lỗi hoặc xin phép một cách lịch sự.",
+        "en": "Apologising or politely asking."
+      },
+      "lesson": 1,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "toi",
+      "word": {
+        "vi": "Tôi",
+        "en": "I / me"
+      },
+      "meaning": {
+        "vi": "Chỉ bản thân người nói.",
+        "en": "Refers to the speaker."
+      },
+      "lesson": 1,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "ban",
+      "word": {
+        "vi": "Bạn",
+        "en": "You"
+      },
+      "meaning": {
+        "vi": "Chỉ người đang trò chuyện cùng.",
+        "en": "Refers to the person you are talking to."
+      },
+      "lesson": 1,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "ten",
+      "word": {
+        "vi": "Tên",
+        "en": "Name"
+      },
+      "meaning": {
+        "vi": "Tên gọi của một người.",
+        "en": "What a person is called."
+      },
+      "lesson": 1,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "gia-dinh",
+      "word": {
+        "vi": "Gia đình",
+        "en": "Family"
+      },
+      "meaning": {
+        "vi": "Những người thân cùng một nhà.",
+        "en": "The people related to you."
+      },
+      "lesson": 2,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "bo",
+      "word": {
+        "vi": "Bố",
+        "en": "Father"
+      },
+      "meaning": {
+        "vi": "Người cha.",
+        "en": "Your father."
+      },
+      "lesson": 2,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "me",
+      "word": {
+        "vi": "Mẹ",
+        "en": "Mother"
+      },
+      "meaning": {
+        "vi": "Người mẹ.",
+        "en": "Your mother."
+      },
+      "lesson": 2,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "anh-trai",
+      "word": {
+        "vi": "Anh trai",
+        "en": "Older brother"
+      },
+      "meaning": {
+        "vi": "Anh ruột, lớn tuổi hơn mình.",
+        "en": "A brother older than you."
+      },
+      "lesson": 2,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "chi-gai",
+      "word": {
+        "vi": "Chị gái",
+        "en": "Older sister"
+      },
+      "meaning": {
+        "vi": "Chị ruột, lớn tuổi hơn mình.",
+        "en": "A sister older than you."
+      },
+      "lesson": 2,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    },
+    {
+      "slug": "em",
+      "word": {
+        "vi": "Em",
+        "en": "Younger sibling"
+      },
+      "meaning": {
+        "vi": "Em ruột, nhỏ tuổi hơn mình.",
+        "en": "A sibling younger than you."
+      },
+      "lesson": 2,
+      "status": "sample",
+      "video": null,
+      "thumbnail": null,
+      "variants": [],
+      "ai_supported": false
+    }
+  ],
+  "_local_videos": {
+    "collection": "local-videos",
+    "source_directory": "../data",
+    "reviewed": false,
+    "translations_reviewed": false,
+    "note": "User-supplied preview collection. lesson=null until syllabus mapping is reviewed; original lesson signs are preserved."
+  }
+}

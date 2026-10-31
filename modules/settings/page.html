@@ -1,0 +1,80 @@
+<section class="settings-page" aria-labelledby="settings-page-title">
+  <div class="sh-page-head">
+    <h1 id="settings-page-title">{{settings.title}}</h1>
+    <p class="sh-lead">{{settings.lead}}</p>
+  </div>
+  <div class="settings-layout">
+    <nav class="settings-nav" aria-label="{{settings.sections}}">
+      <a href="#ngon-ngu">{{settings.language.title}}</a>
+      <a href="#du-lieu">{{settings.data.title}}</a>
+      <a href="#camera">{{settings.camera.title}}</a>
+      <a href="#gioi-thieu">{{settings.about.title}}</a>
+    </nav>
+    <div class="settings-cards">
+      <section class="sh-card" id="ngon-ngu" aria-labelledby="settings-language-title">
+        <h2 id="settings-language-title">{{settings.language.title}}</h2>
+        <p class="settings-description">{{settings.language.note}}</p>
+        <div class="settings-languages">
+          <a class="settings-language" href="{{url.vi}}" hreflang="vi"{{settings.language.vi.current.html}}>
+            <strong lang="vi">{{settings.language.vi}}</strong><span>{{settings.language.vi.status}}</span>
+          </a>
+          <a class="settings-language" href="{{url.en}}" hreflang="en"{{settings.language.en.current.html}}>
+            <strong lang="en">{{settings.language.en}}</strong><span>{{settings.language.en.status}}</span>
+          </a>
+        </div>
+      </section>
+      <section class="sh-card" id="du-lieu" aria-labelledby="settings-data-title">
+        <h2 id="settings-data-title">{{settings.data.title}}</h2>
+        <p class="settings-description">{{settings.data.note}}</p>
+        <p class="settings-warning" data-storage-warning role="status" hidden>{{settings.storage.unavailable}}</p>
+        <div data-summary hidden>
+          <dl class="settings-summary" aria-live="polite" aria-atomic="true">
+            <div><dt>{{settings.summary.lessons}}</dt><dd data-stat="lessons"></dd></div>
+            <div><dt>{{settings.summary.signs}}</dt><dd data-stat="signs"></dd></div>
+            <div><dt>{{settings.summary.practice}}</dt><dd data-stat="practice"></dd></div>
+            <div><dt>{{settings.summary.quiz}}</dt><dd data-stat="quiz"></dd></div>
+          </dl>
+          <p class="settings-note" data-in-progress></p>
+        </div>
+        <div class="settings-actions" data-data-actions hidden>
+          <button class="button" type="button" data-export>{{settings.export}}</button>
+          <button class="button button-outline settings-delete-trigger" type="button" data-delete aria-expanded="false" aria-controls="settings-delete-confirmation">{{settings.delete}}</button>
+        </div>
+        <div class="settings-confirmation" id="settings-delete-confirmation" data-confirmation role="group" aria-labelledby="settings-confirm-title" aria-describedby="settings-confirm-note" tabindex="-1" hidden>
+          <h3 id="settings-confirm-title">{{settings.confirm.title}}</h3>
+          <p id="settings-confirm-note">{{settings.confirm.note}}</p>
+          <div class="settings-actions">
+            <button class="button settings-danger" type="button" data-confirm-delete>{{settings.confirm.delete}}</button>
+            <button class="button button-outline" type="button" data-cancel-delete>{{settings.confirm.cancel}}</button>
+          </div>
+        </div>
+        <p class="settings-message" data-data-message role="status" aria-live="polite" aria-atomic="true"></p>
+        <noscript><p class="settings-note">{{settings.nojs}}</p></noscript>
+      </section>
+      <section class="sh-card" id="camera" aria-labelledby="settings-camera-title">
+        <h2 id="settings-camera-title">{{settings.camera.title}}</h2>
+        <p class="settings-description">{{settings.camera.note}}</p>
+        <p class="settings-permission" data-permission role="status" aria-live="polite" hidden></p>
+        <h3>{{settings.camera.help.title}}</h3>
+        <ol class="settings-steps">
+          <li>{{settings.camera.help.open}}</li>
+          <li>{{settings.camera.help.allow}}</li>
+          <li>{{settings.camera.help.return}}</li>
+        </ol>
+      </section>
+      <section class="sh-card" id="gioi-thieu" aria-labelledby="settings-about-title">
+        <h2 id="settings-about-title">{{settings.about.title}}</h2>
+        <p class="settings-description">{{settings.about.role}}</p>
+        <ul class="settings-limits">
+          <li>{{settings.about.materials}}</li>
+          <li>{{settings.about.ai}}</li>
+          <li><span class="sh-badge sh-badge--sample">{{shell.badge.sample}}</span> {{settings.about.sample}}</li>
+        </ul>
+      </section>
+      <section class="sh-card settings-account" aria-labelledby="settings-account-title" aria-disabled="true">
+        <h2 id="settings-account-title">{{settings.account.title}}</h2>
+        <button class="button button-outline" type="button" disabled>{{settings.account.future}}</button>
+      </section>
+    </div>
+  </div>
+</section>

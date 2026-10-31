@@ -1,0 +1,17 @@
+{
+  "id": "settings",
+  "owner": "Codex",
+  "status": "done",
+  "nav": {
+    "order": 7,
+    "icon": "settings",
+    "label_key": "settings.nav"
+  },
+  "routes": [
+    {
+      "path": "/app/settings",
+      "page": "page.html",
+      "title_key": "settings.title"
+    }
+  ]
+}

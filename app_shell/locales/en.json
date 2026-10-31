@@ -1,0 +1,21 @@
+{
+  "shell.meta.description": "SignHearing learning area: a VSL path by module, a sign dictionary, self-practice and progress tracking.",
+  "shell.nav.label": "Learning area navigation",
+  "shell.crumb.label": "You are here",
+  "shell.crumb.root": "Learning area",
+  "shell.sidebar.note": "A little every day. Progress is saved in this browser.",
+  "shell.notice.sample": "Sample content is on for UI development — not reviewed learning material.",
+  "shell.stub.eyebrow": "MODULE UNDER CONSTRUCTION",
+  "shell.stub.title": "This section has not been built yet.",
+  "shell.stub.body": "The page frame, route and data are ready. The owner only needs to work inside this module's folder.",
+  "shell.stub.owner": "Owner",
+  "shell.stub.spec": "Spec",
+  "shell.stub.unassigned": "Unassigned",
+  "shell.state.not_started": "Not started",
+  "shell.state.in_progress": "In progress",
+  "shell.state.completed": "Completed",
+  "shell.badge.sample": "Sample",
+  "shell.badge.planned": "In preparation",
+  "shell.video.missing": "No reviewed reference video for this sign yet.",
+  "shell.storage.unavailable": "This browser blocks saving data. Progress will be lost on reload."
+}

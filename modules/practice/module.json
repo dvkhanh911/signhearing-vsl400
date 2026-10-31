@@ -1,0 +1,22 @@
+{
+  "id": "practice",
+  "owner": "Codex",
+  "status": "done",
+  "nav": {
+    "order": 4,
+    "icon": "camera",
+    "label_key": "practice.nav"
+  },
+  "routes": [
+    {
+      "path": "/app/practice",
+      "page": "page.html",
+      "title_key": "practice.title"
+    },
+    {
+      "path": "/app/practice/{slug}",
+      "page": "session.html",
+      "title_key": "practice.session.title"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+<section class="dashboard-page" aria-labelledby="dashboard-page-title" data-sample-lessons="{{dashboard.sample.lessons}}" data-sample-signs="{{dashboard.sample.signs}}">
+  <div class="sh-page-head">
+    <h1 id="dashboard-page-title">{{dashboard.title}}</h1>
+    <p class="sh-lead">{{dashboard.lead}}</p>
+  </div>
+  <div class="dashboard-start">
+    <section class="sh-card dashboard-welcome" aria-labelledby="dashboard-welcome-title">
+      <div>
+        <p class="sh-eyebrow">{{dashboard.welcome.eyebrow}}</p>
+        <h2 id="dashboard-welcome-title" data-welcome>{{dashboard.welcome.new}}</h2>
+        <p data-welcome-note>{{dashboard.welcome.new.note}}</p>
+      </div>
+      <img src="/static/assets/mascot.png" width="1351" height="1164" alt="">
+    </section>
+    {{dashboard.resume.html}}
+  </div>
+  <section class="dashboard-stats" aria-labelledby="dashboard-stats-title">
+    <h2 class="sh-sr-only" id="dashboard-stats-title">{{dashboard.stats.title}}</h2>
+    <dl class="dashboard-stat-grid" aria-live="polite">
+      <div class="sh-card"><dt>{{dashboard.stats.lessons}}</dt><dd data-stat="lessons">—</dd><dd class="dashboard-stat-note">{{dashboard.stats.lessons.note}}</dd></div>
+      <div class="sh-card"><dt>{{dashboard.stats.signs}}</dt><dd data-stat="signs">—</dd><dd class="dashboard-stat-note">{{dashboard.stats.signs.note}}</dd></div>
+      <div class="sh-card"><dt>{{dashboard.stats.practice}}</dt><dd data-stat="practice">—</dd><dd class="dashboard-stat-note">{{dashboard.stats.practice.note}}</dd></div>
+      <div class="sh-card"><dt>{{dashboard.stats.quiz}}</dt><dd data-stat="quiz">—</dd><dd class="dashboard-stat-note">{{dashboard.stats.quiz.note}}</dd></div>
+    </dl>
+    <noscript><p class="dashboard-note">{{dashboard.nojs}}</p></noscript>
+  </section>
+  <section class="dashboard-shortcuts" aria-labelledby="dashboard-shortcuts-title">
+    <h2 id="dashboard-shortcuts-title">{{dashboard.shortcuts.title}}</h2>
+    <div class="dashboard-shortcut-grid">{{dashboard.shortcuts.html}}</div>
+  </section>
+  <div class="dashboard-personal" hidden>
+    <section class="sh-card" aria-labelledby="dashboard-retry-title" data-retry-section hidden>
+      <h2 id="dashboard-retry-title">{{dashboard.retry.title}}</h2>
+      <p class="dashboard-note">{{dashboard.retry.note}}</p>
+      <ul class="dashboard-signs" data-retry-list></ul>
+    </section>
+    <section class="sh-card" aria-labelledby="dashboard-favorites-title" data-favorites-section hidden>
+      <h2 id="dashboard-favorites-title">{{dashboard.favorites.title}}</h2>
+      <p class="dashboard-note">{{dashboard.favorites.note}}</p>
+      <ul class="dashboard-signs" data-favorites-list></ul>
+    </section>
+  </div>
+</section>

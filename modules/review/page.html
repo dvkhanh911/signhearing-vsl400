@@ -1,0 +1,72 @@
+<section class="review-page" aria-labelledby="review-page-title" data-sample-slugs="{{review.sample_slugs}}">
+  <div class="sh-page-head">
+    <p class="sh-eyebrow">{{review.eyebrow}}</p>
+    <h1 id="review-page-title">{{review.title}}</h1>
+    <p class="sh-lead">{{review.lead}}</p>
+  </div>
+  <div class="review-workspace">
+    <section class="sh-card review-flashcards" aria-labelledby="review-flash-title">
+      <h2 id="review-flash-title">{{review.flash.title}}</h2>
+      <p class="review-note">{{review.flash.note}}</p>
+      <noscript><p class="review-no-js">{{review.flash.no_js}}</p></noscript>
+      <div data-flash-tools hidden>
+        <div class="review-sources" role="group" aria-label="{{review.flash.source}}">
+          <button class="sh-chip" type="button" data-source="seen" aria-pressed="true">{{review.flash.seen}}</button>
+          <button class="sh-chip" type="button" data-source="favorites" aria-pressed="false">{{review.flash.favorites}}</button>
+          <button class="sh-chip" type="button" data-source="lesson" aria-pressed="false"{{review.lesson_disabled.html}}>{{review.flash.lesson}}</button>
+        </div>
+        <div class="review-lesson-select" data-lesson-picker hidden>
+          <label for="review-lesson-select">{{review.flash.choose_lesson}}</label>
+          <select id="review-lesson-select" data-lesson-select{{review.lesson_disabled.html}}>{{review.lesson_options.html}}</select>
+        </div>
+        <div class="review-flash-progress">
+          <p data-flash-progress role="status" aria-live="polite"></p>
+          <div class="sh-progress" aria-hidden="true"><span data-flash-bar></span></div>
+        </div>
+        <div class="sh-empty review-flash-empty" data-flash-empty hidden>
+          <img src="/static/assets/mascot.png" width="1351" height="1164" alt="">
+          <h3>{{review.flash.empty.title}}</h3>
+          <p>{{review.flash.empty.body}}</p>
+          <a class="button button-outline" href="{{review.courses_url}}">{{review.go.lessons}}</a>
+        </div>
+        <div data-flash-active hidden>
+          <div class="review-flash-top"><span data-flash-position></span><span class="sh-badge sh-badge--sample" data-flash-sample hidden>{{shell.badge.sample}}</span></div>
+          <div class="review-flash-scene" data-flash-scene tabindex="0" role="group" aria-label="{{review.flash.keyboard}}">
+            <div class="review-flash-inner" data-flash-inner>
+              <div class="review-flash-face review-flash-front" data-flash-front aria-hidden="false">
+                <p data-flash-prompt></p>
+                <div class="review-flash-media" data-flash-media></div>
+                <h3 data-flash-word></h3>
+              </div>
+              <div class="review-flash-face review-flash-back" id="review-flash-answer" data-flash-back aria-hidden="true" inert>
+                <p class="sh-eyebrow">{{review.flash.answer}}</p>
+                <h3 data-flash-answer-word></h3>
+                <p data-flash-answer-meaning></p>
+              </div>
+            </div>
+          </div>
+          <div class="review-flash-navigation">
+            <button class="sh-chip" type="button" data-flash-previous>{{review.previous}}</button>
+            <button class="button button-outline" type="button" data-flip aria-expanded="false" aria-controls="review-flash-answer">{{review.flash.flip}}</button>
+            <button class="sh-chip" type="button" data-flash-next>{{review.next}}</button>
+          </div>
+          <div class="review-memory-actions">
+            <button class="button button-outline" type="button" data-forgot>{{review.flash.forgot}}</button>
+            <button class="button" type="button" data-remembered>{{review.flash.remembered}}</button>
+          </div>
+        </div>
+        <div class="sh-empty" data-flash-done hidden>
+          <h3>{{review.flash.done.title}}</h3>
+          <p>{{review.flash.done.body}}</p>
+          <button class="button button-outline" type="button" data-flash-restart>{{review.flash.restart}}</button>
+        </div>
+        <p class="review-flash-message" data-flash-message role="status" aria-live="polite"></p>
+      </div>
+    </section>
+    <section class="review-lesson-section" aria-labelledby="review-lessons-title">
+      <h2 id="review-lessons-title">{{review.lessons.title}}</h2>
+      <p class="review-note">{{review.quiz.rule}}</p>
+      <ul class="review-lessons">{{review.lessons.html}}</ul>
+    </section>
+  </div>
+</section>

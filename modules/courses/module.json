@@ -1,0 +1,9 @@
+{
+  "id": "courses",
+  "owner": "",
+  "status": "done",
+  "nav": {"order": 2, "icon": "map", "label_key": "courses.nav"},
+  "routes": [
+    {"path": "/app/courses", "page": "page.html", "title_key": "courses.title", "description_key": "courses.description"}
+  ]
+}

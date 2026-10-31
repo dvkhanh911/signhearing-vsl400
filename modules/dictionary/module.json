@@ -1,0 +1,22 @@
+{
+  "id": "dictionary",
+  "owner": "Codex",
+  "status": "done",
+  "nav": {
+    "order": 3,
+    "icon": "search",
+    "label_key": "dictionary.nav"
+  },
+  "routes": [
+    {
+      "path": "/app/dictionary",
+      "page": "page.html",
+      "title_key": "dictionary.title"
+    },
+    {
+      "path": "/app/signs/{slug}",
+      "page": "detail.html",
+      "title_key": "dictionary.detail.title"
+    }
+  ]
+}
