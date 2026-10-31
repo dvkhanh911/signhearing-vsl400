@@ -1,0 +1,57 @@
+/* Dashboard styles stay inside this module. */
+.m-dashboard .dashboard-start{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;margin-bottom:22px}
+.m-dashboard .dashboard-welcome{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden;background:linear-gradient(145deg,#fff,#fff8fb);padding:26px}
+.m-dashboard .dashboard-welcome>div{flex:1;min-width:0}
+.m-dashboard .dashboard-welcome h2{font-size:25px;line-height:1.35;margin:10px 0 14px}
+.m-dashboard .dashboard-welcome p:not(.sh-eyebrow){font-size:14px;color:var(--muted);line-height:1.8}
+.m-dashboard .dashboard-welcome img{width:130px;max-width:35%;height:auto;flex-shrink:0;align-self:flex-end}
+.m-dashboard .dashboard-resume{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0;background:linear-gradient(125deg,#e5f2ff,#f3f9ff);border-color:#c5def8}
+.m-dashboard .dashboard-resume h2{font-size:15px;letter-spacing:0;color:#456b96}
+.m-dashboard .dashboard-resume h3{font-size:24px;line-height:1.35}
+.m-dashboard .dashboard-module{font-size:12px;color:#4d719a;font-weight:650}
+.m-dashboard .dashboard-badges{display:flex;flex-wrap:wrap;gap:8px}
+.m-dashboard .dashboard-badges:empty{display:none}
+.m-dashboard .dashboard-resume-progress{display:grid;gap:8px;width:100%;font-size:12px;color:#4d719a}
+.m-dashboard .dashboard-resume .button{margin-top:6px;gap:10px;min-height:44px;padding:11px 22px}
+.m-dashboard .dashboard-note{font-size:12px;color:var(--muted);line-height:1.7}
+.m-dashboard .dashboard-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0}
+.m-dashboard .dashboard-stat-grid .sh-card{padding:20px}
+.m-dashboard .dashboard-stat-grid dt{font-size:13px;font-weight:650;color:#4f6a8a}
+.m-dashboard .dashboard-stat-grid dd[data-stat]{font-size:32px;font-weight:800;line-height:1.3;color:var(--navy);margin:10px 0 6px;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.m-dashboard .dashboard-stat-grid .dashboard-stat-note{font-size:11px;color:var(--muted);line-height:1.6;margin:0}
+.m-dashboard .dashboard-shortcuts{margin-top:30px}
+.m-dashboard .dashboard-shortcuts>h2{font-size:20px;margin-bottom:16px}
+.m-dashboard .dashboard-shortcut-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.m-dashboard .dashboard-shortcut{position:relative;display:grid;align-content:start;gap:12px;padding:20px;color:var(--text);transition:border-color .15s,background .15s}
+.m-dashboard .dashboard-shortcut:hover{border-color:#8ab7ed;background:#fafdff}
+.m-dashboard .dashboard-shortcut-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#edf5ff;color:var(--blue)}
+.m-dashboard .dashboard-shortcut:nth-child(2) .dashboard-shortcut-icon{background:#fff0f5;color:#a94b71}
+.m-dashboard .dashboard-shortcut:nth-child(3) .dashboard-shortcut-icon{background:#e9f7f3;color:#327764}
+.m-dashboard .dashboard-shortcut h3{font-size:16px;letter-spacing:-.02em}
+.m-dashboard .dashboard-shortcut p{font-size:12px;color:var(--muted);line-height:1.8}
+.m-dashboard .dashboard-arrow{position:absolute;right:18px;top:20px;color:#6689b1;font-size:20px}
+.m-dashboard .dashboard-personal{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:24px}
+.m-dashboard .dashboard-personal h2{font-size:19px;margin-bottom:8px}
+.m-dashboard .dashboard-signs{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:8px}
+.m-dashboard .dashboard-signs a{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;color:var(--navy);font-size:14px}
+.m-dashboard .dashboard-signs a:hover{background:#f3f8ff;border-color:#8ab7ed}
+.m-dashboard .dashboard-signs a>.dashboard-note{flex:1;min-width:100px}
+.m-dashboard .dashboard-page [hidden]{display:none}
+@media(max-width:1200px){
+  .m-dashboard .dashboard-welcome{padding:22px}
+  .m-dashboard .dashboard-welcome h2{font-size:22px}
+  .m-dashboard .dashboard-welcome img{width:100px;max-width:30%}
+}
+@media(max-width:800px){
+  .m-dashboard .dashboard-start{grid-template-columns:1fr}
+  .m-dashboard .dashboard-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .m-dashboard .dashboard-shortcut-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:420px){
+  .m-dashboard .dashboard-stat-grid .sh-card{padding:16px}
+  .m-dashboard .dashboard-shortcut-grid{grid-template-columns:1fr}
+  .m-dashboard .dashboard-personal{grid-template-columns:minmax(0,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+  .m-dashboard .dashboard-shortcut{transition:none}
+}

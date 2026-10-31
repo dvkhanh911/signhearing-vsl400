@@ -1,7 +1,7 @@
 __pycache__/
 *.pyc
 .venv/
-
+.backups/
 # Local environment and secrets
 .env
 .env.*
@@ -40,7 +40,8 @@ Thumbs.db
 .publish/
 
 # Local datasets and model checkpoints
-data/
+data/*
+!data/curriculum.json
 datasets/
 checkpoints/
 models/

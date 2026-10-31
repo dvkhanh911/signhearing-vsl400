@@ -1,0 +1,14 @@
+<section class="courses" aria-labelledby="courses-title">
+  <div class="sh-page-head">
+    <p class="sh-eyebrow">{{courses.eyebrow}}</p>
+    <h1 id="courses-title">{{courses.title}}</h1>
+    <p class="sh-lead">{{courses.lead}}</p>
+  </div>
+  {{courses.summary.html}}
+  <div class="courses-filters" role="group" aria-label="{{courses.filter.label}}" hidden>
+    <button class="sh-chip" type="button" data-filter="all" aria-pressed="true">{{courses.filter.all}}</button>
+    <button class="sh-chip" type="button" data-filter="open" aria-pressed="false">{{courses.filter.open}}</button>
+    <button class="sh-chip" type="button" data-filter="todo" aria-pressed="false">{{courses.filter.todo}}</button>
+  </div>
+  <ol class="courses-modules">{{courses.list.html}}</ol>
+</section>

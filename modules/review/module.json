@@ -1,0 +1,22 @@
+{
+  "id": "review",
+  "owner": "Codex",
+  "status": "done",
+  "nav": {
+    "order": 5,
+    "icon": "cards",
+    "label_key": "review.nav"
+  },
+  "routes": [
+    {
+      "path": "/app/review",
+      "page": "page.html",
+      "title_key": "review.title"
+    },
+    {
+      "path": "/app/review/quiz/{id}",
+      "page": "quiz.html",
+      "title_key": "review.quiz.title"
+    }
+  ]
+}

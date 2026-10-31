@@ -1,0 +1,29 @@
+/* courses module. Every selector starts with .m-courses (checked by verify.py). */
+.m-courses .courses-summary{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;margin-bottom:22px;padding:20px 28px}
+.m-courses .courses-summary-label{font-size:12px;font-weight:700;letter-spacing:.08em;color:#6a82a0;text-transform:uppercase}
+.m-courses .courses-summary-value{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:-.03em}
+.m-courses .courses-summary-progress{display:grid;gap:8px;font-size:14px;color:#4f6a8a}
+.m-courses .courses-filters{display:flex;gap:10px;margin-bottom:22px}
+.m-courses .courses-modules{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.m-courses .courses-module{display:grid;gap:16px;align-content:start}
+.m-courses .courses-module-head{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
+.m-courses .courses-module-num{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:#e9f3ff;color:#2268c4;font-weight:800;font-size:16px}
+.m-courses .courses-module-label{font-size:10.5px;font-weight:700;letter-spacing:.14em;color:#7a93b2}
+.m-courses .courses-module h2{font-size:18px;letter-spacing:-.02em}
+.m-courses .courses-module-progress{font-size:12px;color:#6a82a0;white-space:nowrap}
+.m-courses .courses-lessons{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.m-courses .courses-lesson>a,.m-courses .courses-lesson.is-planned{display:flex;gap:12px;align-items:center;min-height:52px;padding:8px 14px;border-radius:14px;border:1px solid #e3edf8;font-size:14px}
+.m-courses .courses-lesson.is-planned{background:#fafcfe;color:#8397ad}
+.m-courses .courses-lesson>a{color:var(--navy);background:#fff;transition:border-color .15s,background .15s,transform .15s}
+.m-courses .courses-lesson>a:hover{border-color:#9cc2ee;background:#f5faff;transform:translateX(2px)}
+.m-courses .courses-lesson-num{flex:0 0 52px;font-size:12px;font-weight:700;color:#6a82a0}
+.m-courses .courses-lesson-title{flex:1;min-width:0;font-weight:650}
+.m-courses .courses-lesson-meta{font-size:12px;color:#6a82a0;white-space:nowrap}
+.m-courses .courses-arrow{color:#2678ed}
+.m-courses .courses-lesson[data-state="completed"] .courses-lesson-num{color:#1b7247}
+.m-courses .courses-module[hidden],.m-courses .courses-lesson[hidden]{display:none}
+@media(max-width:1100px){.m-courses .courses-modules{grid-template-columns:1fr}}
+@media(max-width:700px){
+  .m-courses .courses-summary{grid-template-columns:1fr;gap:12px}
+  .m-courses .courses-lesson-meta,.m-courses .courses-arrow{display:none}
+}

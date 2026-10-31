@@ -1,0 +1,30 @@
+<section class="dictionary-detail" aria-labelledby="dictionary-detail-title" data-slug="{{dictionary.slug}}">
+  <a class="dictionary-back" href="{{dictionary.back_url}}">{{dictionary.back}}</a>
+  <div class="dictionary-detail-layout">
+    <div class="dictionary-media">{{dictionary.media.html}}</div>
+    <div class="sh-card dictionary-definition">
+      <div class="sh-page-head">
+        <p class="sh-eyebrow">{{dictionary.detail.title}}</p>
+        <h1 id="dictionary-detail-title">{{dictionary.heading}}</h1>
+        <div class="dictionary-detail-badges">{{dictionary.sample.html}}</div>
+        <p class="sh-lead">{{dictionary.meaning}}</p>
+      </div>
+      <p class="dictionary-lesson">{{dictionary.lesson.html}}</p>
+      <dl class="dictionary-facts">
+        <dt>{{dictionary.module_caption}}</dt>
+        <dd>{{dictionary.module_name}}</dd>
+        <dt>{{dictionary.variants.title}}</dt>
+        <dd>{{dictionary.variants.html}}</dd>
+      </dl>
+      <p class="dictionary-availability">{{dictionary.practice.unavailable}}</p>
+      <div class="dictionary-detail-actions">
+        <a class="button" href="{{dictionary.practice_url}}">{{dictionary.practice}}</a>
+        <button class="button button-outline" type="button" data-favorite aria-pressed="false" hidden>{{dictionary.favorite.add}}</button>
+      </div>
+    </div>
+  </div>
+  <section class="dictionary-related" aria-labelledby="dictionary-related-title">
+    <h2 id="dictionary-related-title">{{dictionary.related_heading}}</h2>
+    {{dictionary.related.html}}
+  </section>
+</section>

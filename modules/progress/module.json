@@ -1,0 +1,17 @@
+{
+  "id": "progress",
+  "owner": "Codex",
+  "status": "done",
+  "nav": {
+    "order": 6,
+    "icon": "chart",
+    "label_key": "progress.nav"
+  },
+  "routes": [
+    {
+      "path": "/app/progress",
+      "page": "page.html",
+      "title_key": "progress.title"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<section class="practice-page" aria-labelledby="practice-page-title">
+  <div class="sh-page-head">
+    <p class="sh-eyebrow">{{practice.eyebrow}}</p>
+    <h1 id="practice-page-title">{{practice.title}}</h1>
+    <p class="sh-lead">{{practice.lead}}</p>
+  </div>
+  <aside class="sh-card practice-privacy" aria-labelledby="practice-privacy-title">
+    <h2 id="practice-privacy-title">{{practice.privacy.title}}</h2>
+    <p>{{practice.privacy.body}}</p>
+  </aside>
+  <div class="practice-filters" data-filters hidden role="group" aria-label="{{practice.filter.label}}">
+    <button class="sh-chip" type="button" data-filter="all" aria-pressed="true">{{practice.filter.all}}</button>
+    <button class="sh-chip" type="button" data-filter="seen" aria-pressed="false">{{practice.filter.seen}}</button>
+    <button class="sh-chip" type="button" data-filter="favorites" aria-pressed="false">{{practice.filter.favorites}}</button>
+    <button class="sh-chip" type="button" data-filter="unpractised" aria-pressed="false">{{practice.filter.unpractised}}</button>
+  </div>
+  <p class="practice-results" data-result-count role="status" hidden></p>
+  {{practice.groups.html}}
+  <div class="sh-card sh-empty" data-empty hidden>
+    <h2>{{practice.empty.title}}</h2>
+    <p>{{practice.empty.body}}</p>
+    <a class="button button-outline" href="{{practice.courses_url}}">{{practice.back.courses}}</a>
+  </div>
+</section>

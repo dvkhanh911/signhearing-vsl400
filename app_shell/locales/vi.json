@@ -1,0 +1,21 @@
+{
+  "shell.meta.description": "Khu học tập SignHearing: lộ trình VSL theo học phần, từ điển ký hiệu, tự luyện tập và theo dõi tiến độ.",
+  "shell.nav.label": "Điều hướng khu học tập",
+  "shell.crumb.label": "Vị trí hiện tại",
+  "shell.crumb.root": "Khu học tập",
+  "shell.sidebar.note": "Học từng chút mỗi ngày. Tiến độ được lưu trên trình duyệt này.",
+  "shell.notice.sample": "Đang bật nội dung mẫu để dựng giao diện — chưa phải học liệu đã duyệt.",
+  "shell.stub.eyebrow": "MODULE ĐANG XÂY DỰNG",
+  "shell.stub.title": "Phần này chưa được dựng giao diện.",
+  "shell.stub.body": "Khung trang, đường dẫn và dữ liệu đã sẵn sàng. Người phụ trách chỉ cần làm việc trong thư mục của module này.",
+  "shell.stub.owner": "Phụ trách",
+  "shell.stub.spec": "Đặc tả",
+  "shell.stub.unassigned": "Chưa phân công",
+  "shell.state.not_started": "Chưa học",
+  "shell.state.in_progress": "Đang học",
+  "shell.state.completed": "Hoàn thành",
+  "shell.badge.sample": "Mẫu",
+  "shell.badge.planned": "Đang biên soạn",
+  "shell.video.missing": "Chưa có video mẫu đã duyệt cho ký hiệu này.",
+  "shell.storage.unavailable": "Trình duyệt không cho lưu dữ liệu. Tiến độ sẽ mất khi tải lại trang."
+}

@@ -1,0 +1,21 @@
+{
+  "courses.nav": "Lộ trình học",
+  "courses.title": "Lộ trình học",
+  "courses.description": "Khung giáo trình VSL 400 của SignHearing: 8 học phần, 18 bài, mở dần khi học liệu được duyệt.",
+  "courses.eyebrow": "KHUNG GIÁO TRÌNH VSL 400",
+  "courses.lead": "8 học phần đi từ giao tiếp nền tảng đến cảm xúc và đời sống. Bài chỉ mở khi đã có học liệu được rà soát.",
+  "courses.summary.title": "Bài đang mở",
+  "courses.summary.open": "{open}/{total} bài",
+  "courses.summary.js": "Tiến độ của bạn hiển thị khi bật JavaScript.",
+  "courses.summary.progress": "Bạn đã hoàn thành {done}/{open} bài đang mở",
+  "courses.module.label": "HỌC PHẦN",
+  "courses.module.none": "Chưa có bài mở",
+  "courses.module.progress": "{done}/{open} hoàn thành",
+  "courses.lesson.label": "Bài",
+  "courses.signs": "{n} ký hiệu",
+  "courses.filter.label": "Lọc bài học",
+  "courses.filter.all": "Tất cả",
+  "courses.filter.open": "Đang mở",
+  "courses.filter.todo": "Chưa hoàn thành",
+  "courses.lesson.untitled": "Tên bài đang cập nhật"
+}

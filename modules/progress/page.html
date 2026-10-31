@@ -1,0 +1,56 @@
+<section class="progress-page" aria-labelledby="progress-page-title" data-sample-signs="{{progress.sample.signs}}" data-sample-lessons="{{progress.sample.lessons}}">
+  <div class="sh-page-head">
+    <h1 id="progress-page-title">{{progress.title}}</h1>
+    <p class="sh-lead">{{progress.lead}}</p>
+  </div>
+  <dl class="progress-stat-grid" aria-live="polite" aria-atomic="true">
+    <div class="sh-card"><dt>{{progress.stats.lessons}}</dt><dd data-stat="lessons">{{progress.unknown}}</dd><dd class="progress-note">{{progress.stats.lessons.note}}</dd></div>
+    <div class="sh-card"><dt>{{progress.stats.signs}}</dt><dd data-stat="signs">{{progress.unknown}}</dd><dd class="progress-note">{{progress.stats.signs.note}}</dd></div>
+    <div class="sh-card"><dt>{{progress.stats.practice}}</dt><dd data-stat="practice">{{progress.unknown}}</dd><dd class="progress-note">{{progress.stats.practice.note}}</dd></div>
+    <div class="sh-card"><dt>{{progress.stats.quiz}}</dt><dd data-stat="quiz">{{progress.unknown}}</dd><dd class="progress-note">{{progress.stats.quiz.note}}</dd></div>
+  </dl>
+  <p class="progress-note">{{progress.storage.note}}</p>
+  <noscript><p class="sh-card progress-note">{{progress.nojs}}</p></noscript>
+  <div class="progress-overview">
+    <section class="sh-card" aria-labelledby="progress-modules-title">
+      <h2 id="progress-modules-title">{{progress.modules.title}}</h2>
+      <ol class="progress-modules">{{progress.modules.html}}</ol>
+    </section>
+    <section class="sh-card" aria-labelledby="progress-calendar-title">
+      <h2 id="progress-calendar-title">{{progress.calendar.title}}</h2>
+      <p class="progress-note">{{progress.calendar.note}}</p>
+      <div data-calendar-region hidden>
+        <p class="progress-calendar-range" data-calendar-range></p>
+        <div class="progress-calendar" data-calendar role="list" aria-labelledby="progress-calendar-title"></div>
+        <ul class="progress-legend" aria-label="{{progress.calendar.legend}}">
+          <li><span class="progress-swatch level-0" aria-hidden="true"></span>{{progress.calendar.level0}}</li>
+          <li><span class="progress-swatch level-1" aria-hidden="true"></span>{{progress.calendar.level1}}</li>
+          <li><span class="progress-swatch level-2" aria-hidden="true"></span>{{progress.calendar.level2}}</li>
+          <li><span class="progress-swatch level-3" aria-hidden="true"></span>{{progress.calendar.level3}}</li>
+        </ul>
+      </div>
+      <div data-calendar-empty hidden>{{progress.empty.calendar.html}}</div>
+      <noscript><p class="progress-note">{{progress.nojs}}</p></noscript>
+    </section>
+  </div>
+  <section class="sh-card progress-section" aria-labelledby="progress-practice-title">
+    <h2 id="progress-practice-title">{{progress.practice.title}}</h2>
+    <p class="progress-note">{{progress.practice.note}}</p>
+    <div data-practice-content></div>
+    <noscript><p class="progress-note">{{progress.nojs}}</p></noscript>
+  </section>
+  <section class="sh-card progress-section" aria-labelledby="progress-quiz-title">
+    <h2 id="progress-quiz-title">{{progress.quiz.title}}</h2>
+    <div data-quiz-content></div>
+    <noscript><p class="progress-note">{{progress.nojs}}</p></noscript>
+  </section>
+  <section class="sh-card progress-section" aria-labelledby="progress-seen-title">
+    <h2 id="progress-seen-title">{{progress.seen.title}}</h2>
+    <div data-seen-content></div>
+    <noscript><p class="progress-note">{{progress.nojs}}</p></noscript>
+  </section>
+  <template data-empty-practice>{{progress.empty.practice.html}}</template>
+  <template data-empty-quiz>{{progress.empty.quiz.html}}</template>
+  <template data-empty-seen>{{progress.empty.seen.html}}</template>
+  <p class="sh-sr-only" data-updated role="status" aria-live="polite"></p>
+</section>

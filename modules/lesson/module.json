@@ -1,0 +1,13 @@
+{
+  "id": "lesson",
+  "owner": "Codex",
+  "status": "done",
+  "nav_parent": "courses",
+  "routes": [
+    {
+      "path": "/app/lessons/{id}",
+      "page": "page.html",
+      "title_key": "lesson.title"
+    }
+  ]
+}

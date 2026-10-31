@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="{{locale}}"><head>{{layout.head}}</head>
+<body class="app-page m-{{module.id}}">
+<a class="skip-link" href="#main">{{a11y.skip}}</a>
+<div class="app-frame">
+  <aside class="app-sidebar">
+    <a class="app-brand" href="{{url.home}}" aria-label="{{a11y.home}}"><img src="/static/assets/logo-horizontal.png" alt="{{site.name}}" width="2172" height="724"></a>
+    <nav class="app-nav" aria-label="{{shell.nav.label}}">{{shell.nav.html}}</nav>
+    <div class="app-sidebar-foot">
+      <img src="/static/assets/mascot.png" alt="" width="1351" height="1164" loading="lazy">
+      <p>{{shell.sidebar.note}}</p>
+    </div>
+  </aside>
+  <div class="app-column">
+    <header class="app-topbar">
+      <nav class="app-crumbs" aria-label="{{shell.crumb.label}}">{{shell.crumbs.html}}</nav>
+      <div class="app-topbar-actions">{{layout.languages}}<a class="back-link" href="{{url.home}}">← {{action.home}}</a></div>
+    </header>
+    <p class="app-notice" role="note"><span class="status-dot" aria-hidden="true"></span><span>{{journey.material.note}}</span>{{shell.notice.html}}</p>
+    <main id="main" class="app-content" tabindex="-1">{{module.body}}</main>
+    <footer class="app-footer"><small>© {{year}} {{site.name}}</small><span class="slogan">{{site.tagline}}</span></footer>
+  </div>
+</div>
+<script type="application/json" id="sh-data">{{shell.data.json}}</script>
+<script type="application/json" id="sh-i18n">{{shell.i18n.json}}</script>
+</body></html>

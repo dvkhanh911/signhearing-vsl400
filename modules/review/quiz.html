@@ -1,0 +1,41 @@
+<section class="review-quiz" aria-labelledby="review-quiz-title" data-lesson-id="{{review.lesson_id}}" data-sample-slugs="{{review.sample_slugs}}">
+  <div class="sh-page-head">
+    <p class="sh-eyebrow">{{review.eyebrow}}</p>
+    <h1 id="review-quiz-title">{{review.heading}}</h1>
+    <p class="sh-lead">{{review.lesson_title}}</p>
+    <div>{{review.sample.html}}</div>
+  </div>
+  <p class="review-quiz-rule">{{review.quiz.rule}}</p>
+  <noscript>
+    <div class="sh-card review-no-js"><p>{{review.quiz.no_js}}</p><h2>{{review.reading.title}}</h2><ul class="review-reading">{{review.reading.html}}</ul></div>
+  </noscript>
+  <div data-quiz-app hidden>
+    <p class="review-best" data-best></p>
+    <section class="sh-card review-question-card" data-question-card aria-labelledby="review-question-title">
+      <div class="review-question-top"><p data-question-position></p><span class="sh-badge sh-badge--sample" data-question-sample hidden>{{shell.badge.sample}}</span></div>
+      <div class="sh-progress" aria-hidden="true"><span data-quiz-bar></span></div>
+      <h2 id="review-question-title" tabindex="-1" data-question></h2>
+      <div class="review-question-media" data-question-media hidden></div>
+      <div class="review-options" data-options role="group" aria-labelledby="review-question-title"></div>
+      <p class="review-quiz-feedback" data-feedback role="status" aria-live="assertive" aria-atomic="true"></p>
+      <button class="button" type="button" data-next-question disabled>{{review.quiz.next}}</button>
+      <p class="review-note review-keyboard-hint">{{review.quiz.keyboard}}</p>
+    </section>
+    <section class="sh-card review-result" data-result hidden aria-labelledby="review-result-title">
+      <img class="review-result-mascot" data-result-mascot src="/static/assets/mascot.png" width="1351" height="1164" alt="" hidden>
+      <h2 id="review-result-title" data-result-title tabindex="-1">{{review.result.title}}</h2>
+      <p class="review-result-score" data-result-score></p>
+      <p class="review-result-message" data-result-message role="status" aria-live="polite"></p>
+      <div class="review-mistakes" data-mistakes hidden><h3>{{review.result.mistakes}}</h3><ul data-mistake-list></ul></div>
+      <div class="review-result-actions">
+        <button class="button" type="button" data-retry>{{review.quiz.retry}}</button>
+        <a class="button button-outline" href="{{review.lesson_url}}">{{review.go.lesson}}</a>
+      </div>
+    </section>
+  </div>
+  <nav class="review-page-navigation" aria-label="{{review.navigation}}">
+    <a href="{{review.back_url}}">{{review.go.review}}</a>
+    <a href="{{review.lesson_url}}">{{review.go.lesson}}</a>
+    <a href="{{review.courses_url}}">{{review.go.lessons}}</a>
+  </nav>
+</section>

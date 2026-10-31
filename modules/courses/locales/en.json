@@ -1,0 +1,21 @@
+{
+  "courses.nav": "Learning path",
+  "courses.title": "Learning path",
+  "courses.description": "SignHearing's VSL 400 syllabus: 8 modules, 18 lessons, opened step by step as material is reviewed.",
+  "courses.eyebrow": "VSL 400 SYLLABUS FRAMEWORK",
+  "courses.lead": "8 modules, from everyday basics to emotions and daily life. A lesson opens only once its material has been reviewed.",
+  "courses.summary.title": "Lessons open",
+  "courses.summary.open": "{open}/{total} lessons",
+  "courses.summary.js": "Your progress appears when JavaScript is on.",
+  "courses.summary.progress": "You have completed {done}/{open} open lessons",
+  "courses.module.label": "MODULE",
+  "courses.module.none": "No lessons open yet",
+  "courses.module.progress": "{done}/{open} completed",
+  "courses.lesson.label": "Lesson",
+  "courses.signs": "{n} signs",
+  "courses.filter.label": "Filter lessons",
+  "courses.filter.all": "All",
+  "courses.filter.open": "Open",
+  "courses.filter.todo": "Not completed",
+  "courses.lesson.untitled": "Title coming soon"
+}

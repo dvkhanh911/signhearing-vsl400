@@ -11,7 +11,7 @@ python serve.py
 
 - Tiếng Việt: **http://127.0.0.1:8000/?lang=vi**
 - English: **http://127.0.0.1:8000/?lang=en**
-- Thông báo khu học: **http://127.0.0.1:8000/app**
+- Khu học tập (laptop-first, chưa có AI): **http://127.0.0.1:8000/app** — lộ trình mẫu ở `/app/courses`
 - Thử 404 có dịch: **http://127.0.0.1:8000/trang-khong-co?lang=en**
 
 Nếu cổng bận, dùng `python serve.py --port 8001`. Chỉ lắng nghe loopback. Dừng bằng Ctrl+C.
@@ -69,4 +69,16 @@ verify.py / docs/                                Kiểm tra và bàn giao
 mascot.jpg / SignHearing_PRD.md                   Nguồn tham chiếu được giữ nguyên
 ```
 
-Chưa tiếp tục phát triển khu học trước khi landing được duyệt.
+## Khu học tập `/app` — chia module
+
+Nút “Khám phá SignHearing” mở khu học tập gồm 8 module độc lập trong `modules/<id>/`; mỗi thành viên chỉ sửa thư mục của mình. Đọc **[docs/MODULES.md](docs/MODULES.md)** (bản đồ module, quy tắc, hợp đồng dữ liệu `SH.store`, quy trình Git) và `modules/<id>/README.md` (đặc tả từng module). Module `courses` đã làm xong để làm mẫu; các module còn lại hiện trang “đang xây dựng” đúng route.
+
+```text
+app_shell/        layout, sidebar, UI kit sh-*, core.js (SH.store), chuỗi shell.*   — lead
+app_modules.py    tự tìm module, route, menu, render                                — lead
+content.py        đọc data/curriculum.json                                          — lead
+data/             khung giáo trình VSL 400 (8 học phần/18 bài) + nội dung mẫu       — phụ trách nội dung
+modules/<id>/     module.json, page.html, view.py, style.css, script.js, locales/   — từng thành viên
+```
+
+`site-config.json` → `show_sample_content: true` bật 2 bài mẫu để dựng giao diện; tắt trước khi demo với học liệu thật.

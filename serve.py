@@ -1,13 +1,15 @@
-"""SignHearing: shared VI/EN rendering, landing, /app notice and localised 404."""
+"""SignHearing: shared VI/EN rendering, landing, learning area (/app/*, see app_modules.py) and localised 404."""
 import argparse
 import html
 import json
 import mimetypes
+import re
 from http.cookies import CookieError, SimpleCookie
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
+import app_modules
 from i18n import DICTIONARIES, LOCALES, ROOT, format_number, render_file
 
 STATIC = ROOT / 'static'
@@ -91,11 +93,70 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('X-Content-Type-Options', 'nosniff')
         self.send_header('X-Frame-Options', 'DENY')
         self.send_header('Referrer-Policy', 'same-origin')
-        self.send_header('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'")
+        self.send_header('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'none'")
         if locale:
             self.send_header('Content-Language', locale)
             self.send_header('Vary', 'Cookie')
             self.send_header('Set-Cookie', 'signhearing_language=' + locale + '; Path=/; Max-Age=31536000; HttpOnly; SameSite=Lax')
+
+    def send_static(self, candidate, head_only):
+        if candidate.suffix == '.mp4':
+            self.send_video(candidate, head_only)
+            return
+        body = candidate.read_bytes()
+        mime = 'text/javascript' if candidate.suffix == '.js' else mimetypes.guess_type(candidate)[0] or 'application/octet-stream'
+        if candidate.suffix in {'.css', '.js', '.svg'}:
+            mime += '; charset=utf-8'
+        self.response_headers(200, mime, len(body))
+        self.end_headers()
+        if not head_only:
+            self.wfile.write(body)
+
+    def send_video(self, candidate, head_only):
+        """Stream local MP4s and single byte ranges so native seeking works."""
+        with candidate.open('rb') as video:
+            size = candidate.stat().st_size
+            start, end, status = 0, size - 1, 200
+            byte_range = self.headers.get('Range')
+            # If-Range has no validator here: return the full representation.
+            if byte_range and not self.headers.get('If-Range'):
+                match = re.fullmatch(r'bytes=(\d{0,20})-(\d{0,20})', byte_range.strip())
+                valid = bool(match and any(match.groups()) and size)
+                if valid:
+                    first, last = match.groups()
+                    if first:
+                        start = int(first)
+                        end = min(int(last), size - 1) if last else size - 1
+                    else:
+                        suffix = int(last)
+                        start = max(0, size - suffix)
+                        valid = suffix > 0
+                    valid = valid and start <= end and start < size
+                if not valid:
+                    self.response_headers(416, 'video/mp4', 0)
+                    self.send_header('Content-Range', f'bytes */{size}')
+                    self.send_header('Accept-Ranges', 'bytes')
+                    self.end_headers()
+                    return
+                status = 206
+            length = max(0, end - start + 1)
+            self.response_headers(status, 'video/mp4', length)
+            self.send_header('Accept-Ranges', 'bytes')
+            if status == 206:
+                self.send_header('Content-Range', f'bytes {start}-{end}/{size}')
+            self.end_headers()
+            if head_only:
+                return
+            video.seek(start)
+            try:
+                while length:
+                    block = video.read(min(length, 64 * 1024))
+                    if not block:
+                        break
+                    self.wfile.write(block)
+                    length -= len(block)
+            except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+                pass  # Browsers cancel an old range when seeking to a new one.
 
     def serve(self, head_only=False, error=False):
         url = urlsplit(self.path)
@@ -106,22 +167,30 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header('Location', '/app?lang=' + locale)
             self.end_headers()
             return
-        if path.startswith('/static/') and not error:
-            candidate = (ROOT / path.lstrip('/')).resolve()
-            if candidate.is_relative_to(STATIC) and candidate.suffix in {'.css', '.js', '.png', '.svg', '.webp', '.woff2'} and candidate.is_file():
-                body = candidate.read_bytes()
-                mime = 'text/javascript' if candidate.suffix == '.js' else mimetypes.guess_type(candidate)[0] or 'application/octet-stream'
-                if candidate.suffix in {'.css', '.js', '.svg'}:
-                    mime += '; charset=utf-8'
-                self.response_headers(200, mime, len(body))
-                self.end_headers()
-                if not head_only:
-                    self.wfile.write(body)
+        if path.startswith(('/static/app/', '/static/m/')) and not error:
+            candidate = app_modules.static_file(path)
+            if candidate:
+                self.send_static(candidate, head_only)
                 return
-        kind = 'home' if path == '/' and not error else 'app' if path in ('/app', '/app/') and not error else 'error'
-        # Unknown paths never enter a template or language-switch href.
-        canonical_path = '/' if kind == 'home' else '/app' if kind == 'app' else '/404'
-        body = render_page(locale, canonical_path, kind)
+        elif path.startswith('/static/') and not error:
+            candidate = (ROOT / path.lstrip('/')).resolve()
+            if candidate.is_relative_to(STATIC) and candidate.suffix in {'.css', '.js', '.png', '.svg', '.webp', '.woff2', '.mp4'} and candidate.is_file():
+                self.send_static(candidate, head_only)
+                return
+        body = None
+        if not error and app_modules.is_app_path(path):
+            # Learning area: the path matched a registered module route, so it is safe to reuse.
+            app_path = path.rstrip('/') or '/'
+            try:
+                body = app_modules.render(locale, app_path, page_context(locale, app_path, 'app')).encode('utf-8')
+                kind = 'app'
+            except app_modules.NotFound:
+                body = None
+        if body is None:
+            kind = 'home' if path == '/' and not error else 'error'
+            # Unknown paths never enter a template or language-switch href.
+            canonical_path = '/' if kind == 'home' else '/404'
+            body = render_page(locale, canonical_path, kind)
         self.response_headers(404 if kind == 'error' else 200, 'text/html; charset=utf-8', len(body), locale)
         self.end_headers()
         if not head_only:
