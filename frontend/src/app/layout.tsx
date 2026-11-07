@@ -5,10 +5,11 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { AnchorBehavior } from "@/components/shared/anchor-behavior";
 import { manrope } from "@/lib/fonts";
+import { siteOrigin } from "@/lib/deployment";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.SITE_URL || "http://localhost:3000"),
+  metadataBase: siteOrigin(),
   icons: { icon: "/assets/mascot.png" },
 };
 export const viewport: Viewport = {

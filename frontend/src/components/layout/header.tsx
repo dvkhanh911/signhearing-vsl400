@@ -9,7 +9,14 @@ import { MobileNavigation } from "./mobile-navigation";
 export async function Header({ locale }: { locale: Locale }) {
   const t = dictionary(locale);
   const page = (await headers()).get("x-sh-page");
-  const path = page === "/" || page === "/features" ? page : "/404";
+  const path =
+    page &&
+    (page === "/" ||
+      page === "/features" ||
+      page === "/login" ||
+      /^\/app(?:\/[a-zA-Z0-9_-]+)*\/?$/.test(page))
+      ? page
+      : "/404";
   const links = [
     ["vsl", "nav.vsl"],
     ["cau-chuyen", "nav.story"],

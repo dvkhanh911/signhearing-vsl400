@@ -1,0 +1,16 @@
+.git/
+.vercel/
+.runtime/
+.env
+.env.*
+**/.env
+**/.env.*
+**/node_modules/
+**/.next/
+**/.runtime/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.ruff_cache/
+backend/
+static/media/

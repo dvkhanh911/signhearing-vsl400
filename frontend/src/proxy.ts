@@ -18,7 +18,11 @@ export function proxy(request: NextRequest) {
       ? "/"
       : /^\/features\/?$/.test(request.nextUrl.pathname)
         ? "/features"
-        : "/404",
+        : /^\/app(?:\/[a-zA-Z0-9_-]+)*\/?$/.test(request.nextUrl.pathname)
+          ? request.nextUrl.pathname
+          : /^\/login\/?$/.test(request.nextUrl.pathname)
+            ? "/login"
+            : "/404",
   );
   let response: NextResponse;
   if (/^\/khu-hoc-tap\/?$/.test(request.nextUrl.pathname)) {

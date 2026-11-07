@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
+import { backendUrl } from "./src/lib/deployment";
 
 const config: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   experimental: { globalNotFound: true },
   async rewrites() {
-    const backend = process.env.BACKEND_URL || "http://127.0.0.1:8001";
+    const backend = backendUrl();
+    if (!backend) return [];
     return {
       beforeFiles: [
         { source: "/login", destination: `${backend}/login` },

@@ -320,5 +320,8 @@
   "login.privacy": "Thông tin chỉ dùng cho phiên trải nghiệm trên trình duyệt này.",
   "login.transition": "Đang mở khu học tập...",
   "login.home": "Trở về trang chủ",
-  "immersive.hero.description": "Khám phá Ngôn ngữ ký hiệu Việt Nam. Bắt đầu từ một lời chào."
+  "immersive.hero.description": "Khám phá Ngôn ngữ ký hiệu Việt Nam. Bắt đầu từ một lời chào.",
+  "availability.learning.title": "Khu học sắp sẵn sàng",
+  "availability.learning.body": "Khu học hiện chưa được kết nối. Bạn vẫn có thể khám phá SignHearing và xem hướng dẫn tính năng.",
+  "availability.learning.action": "Khám phá tính năng"
 }
