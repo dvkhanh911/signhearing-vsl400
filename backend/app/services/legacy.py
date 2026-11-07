@@ -5,12 +5,25 @@ functions; importing serve does not start its HTTP server. Page contexts refresh
 translation files before rendering templates from the shared app shell.
 """
 
+import os
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
+BACKEND = Path(__file__).resolve().parents[2]
+REPOSITORY = BACKEND.parent
+BUNDLE = BACKEND / "legacy_site"
+if os.environ.get("VERCEL") == "1" and (BUNDLE / "app_modules.py").is_file():
+    ROOT = BUNDLE
+elif (REPOSITORY / "app_modules.py").is_file():
+    ROOT = REPOSITORY
+else:
+    ROOT = BUNDLE
+if not (ROOT / "app_modules.py").is_file():
+    raise RuntimeError(
+        "Learning sources are missing. Run python scripts/prepare_legacy.py during build."
+    )
 if str(ROOT) not in sys.path:
-    sys.path.append(str(ROOT))
+    sys.path.insert(0, str(ROOT))
 
 import app_modules  # noqa: E402
 from serve import page_context, render_page  # noqa: E402

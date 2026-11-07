@@ -1,100 +1,127 @@
-# SignHearing — landing kể chuyện, VI/EN
+# SignHearing — homepage mới và khu học VSL
 
-Website Python 3.11+ dùng thư viện chuẩn; không cần Node.js, dependency, database hay dịch vụ ngoài để chạy.
+Homepage đã sửa UI và trang **Tính năng** nằm trong ứng dụng Next.js ở `frontend/`.
+Khu học tập dùng các module Python mới nhất của nhóm, qua backend FastAPI.
 
-## Chạy
+## Chạy giao diện hiện tại
 
-```powershell
-cd D:\SignHearing
-python serve.py
-```
-
-- Tiếng Việt: **http://127.0.0.1:8000/?lang=vi**
-- English: **http://127.0.0.1:8000/?lang=en**
-- Thông báo khu học: **http://127.0.0.1:8000/app**
-- Thử 404 có dịch: **http://127.0.0.1:8000/trang-khong-co?lang=en**
-
-Nếu cổng bận, dùng `python serve.py --port 8001`. Chỉ lắng nghe loopback. Dừng bằng Ctrl+C.
-
-## Deploy lên Vercel bằng GitHub
-
-Các file triển khai đã có sẵn:
-
-- `api/index.py`: điểm vào Vercel Functions, dùng lại `Handler` trong `serve.py`.
-- `vercel.json`: chọn preset Other, bỏ bước build và chuyển mọi đường dẫn qua Python.
-- `.python-version`: chọn Python 3.12 trên Vercel.
-- `.vercelignore`: bỏ qua công cụ, checkout cũ và cache khi upload bằng CLI.
-
-Mọi request, kể cả `/static/`, đi qua handler hiện có để giữ render VI/EN, cookie ngôn ngữ, redirect cũ, trang 404 và quy tắc chặn file nội bộ. Các template HTML, `partials/`, `locales/`, `static/` và `site-config.json` phải nằm trong repo để Python đọc lúc chạy.
-
-1. Commit các file triển khai và README này vào nhánh chứa bản landing cần deploy trên GitHub.
-2. Mở <https://vercel.com/new>, kết nối GitHub và import repo `dvkhanh911/signhearing-vsl400`.
-3. Đặt **Root Directory** là gốc repo (`./`), **Framework Preset** là **Other**. `vercel.json` đã đặt **Build Command** rỗng và **Output Directory** là `.`. Giữ Install Command mặc định; bản landing hiện chưa cần biến môi trường.
-4. Kiểm tra nhánh nguồn. Nếu bản landing nằm ở `feature/homepage`, đặt **Production Branch** trỏ tới nhánh đó; khi nhánh production thay đổi, tạo deployment cho nhánh vừa chọn nếu chưa tự chạy.
-5. Bấm **Deploy**. Nếu đã có project, dùng **Deployments → Create Deployment** và chọn nhánh/commit chứa cấu hình mới, hoặc đẩy một commit mới vào nhánh production đã kết nối.
-6. Trên domain được cấp, kiểm tra `/?lang=vi`, `/?lang=en`, `/app`, `/khu-hoc-tap?lang=en` và `/trang-khong-co`. Trang phải có CSS/ảnh, không còn placeholder `{{ ... }}`, đổi ngôn ngữ và reload vẫn giữ lựa chọn.
-
-Có thể chạy kiểm tra HTTP trên domain sau khi deploy (domain cần truy cập được từ máy chạy lệnh):
+Từ PowerShell tại `D:\SignHearing`:
 
 ```powershell
-python verify.py --url https://TEN-DU-AN.vercel.app
+powershell -ExecutionPolicy Bypass -File .\scripts\start-modern.ps1
 ```
 
-Thư mục làm việc `D:\SignHearing` hiện không phải Git checkout. Nếu upload bằng giao diện GitHub, dùng **Add file → Upload files** cho thư mục `api` và các file cấu hình, giữ nguyên đường dẫn `api/index.py`. Với file bắt đầu bằng dấu chấm, có thể dùng **Add file → Create new file** và nhập đúng tên. `vercel-setup.zip` chỉ là gói bàn giao để giải nén trên máy; GitHub không tự giải nén file ZIP được upload.
+Script mở hai server ẩn và ghi log, PID trong `.runtime/`:
 
-Tài liệu: [Python Functions](https://vercel.com/docs/functions/runtimes/python/api-directory), [vercel.json](https://vercel.com/docs/project-configuration/vercel-json), [Git deployments](https://vercel.com/docs/git).
+- **Homepage mới:** http://127.0.0.1:3000/?lang=vi
+- **Tính năng:** http://127.0.0.1:3000/features?lang=vi
+- **Khu học tập:** http://127.0.0.1:3000/app?lang=vi
+- **English:** đổi `lang=vi` thành `lang=en`.
+- **API health:** http://127.0.0.1:8001/api/health
 
-## Phạm vi
+`python serve.py` chạy giao diện Python cũ ở cổng 8000. Để xem homepage mới
+và mục Tính năng, dùng server Next.js ở **cổng 3000** như trên.
 
-Trang chủ kể chuyện: hero → VSL và trích dẫn I. King Jordan → khó khăn lúc bắt đầu → câu chuyện SignHearing và định hướng sản phẩm → hành trình hiện tại → đồng hành và trích dẫn Helen Keller → footer.
+Script tìm Node trong PATH hoặc `.tools/node-v*-win-x64/` ngay trong repo.
+Chạy lại lệnh sẽ dùng lại server của đúng dự án được ghi trong `.runtime/processes.json`, kiểm tra
+homepage/API, và khởi động server còn thiếu. Nếu cổng 3000 hoặc 8001 thuộc
+ứng dụng khác, script sẽ báo rõ để bạn kiểm tra ứng dụng đang dùng cổng đó.
 
-CTA chính hero “Đọc câu chuyện” cuộn tới nội dung; “Khám phá SignHearing” mở `/app` thông báo đang xây dựng, với layout riêng. Đường cũ `/khu-hoc-tap` chuyển hướng về `/app`, giữ ngôn ngữ.
+## Thiết lập trên máy mới
 
-Hiện chưa có video học liệu chính thức. Các con số 8 học phần/18 bài được ghi là khung dự kiến. Không có số người dùng, phần trăm hoàn thành hoặc kết quả AI giả. Các định hướng sản phẩm trong câu chuyện không mở chức năng học.
+Yêu cầu Node.js 22+, Python 3.12+ và uv. Chạy từ gốc repo:
 
-Checkout ở đầu lượt này chỉ có landing và trang thông báo: tài khoản, CMS, database và khu học đã bị xóa ở giai đoạn trước theo yêu cầu trước đó. Lượt hiện tại **giữ mã và dữ liệu đang có**, không xóa thêm và không tự dựng lại chức năng đó. Auth/form/learning không có để dịch hoặc kiểm thử; mọi route chưa tồn tại trả trang 404 có VI/EN.
+```powershell
+npm --prefix frontend ci
+uv sync --project backend --locked --python 3.12
+powershell -ExecutionPolicy Bypass -File .\scripts\start-modern.ps1
+```
 
-## i18n dùng chung
+Không cần PostgreSQL hoặc thông tin đăng nhập để mở homepage, trang Tính năng
+và các module học hiện tại. Tiến độ học demo vẫn lưu trong trình duyệt theo origin.
 
-- `locales/vi.json`, `locales/en.json`: 97 key khớp nhau, bao gồm nội dung, metadata, alt/ARIA, nút, menu, trạng thái liên hệ, thông báo và 404.
-- `i18n.py`: kiểm tra key, escape HTML, render template; formatter ngày/số theo locale.
-- `serve.py`: render từ máy chủ; ưu tiên `?lang=vi|en`, sau đó cookie, mặc định VI cho lần truy cập đầu.
-- Cookie ngôn ngữ có Path=/, Max-Age 1 năm, HttpOnly, SameSite=Lax. Lựa chọn giữ qua reload và truy cập trực tiếp; link nội bộ cũng giữ query ngôn ngữ.
-- Hoạt động khi tắt JavaScript. JS chỉ hỗ trợ menu, chuyển động, giữ hash khi đổi ngôn ngữ và mở thông báo liên hệ, không thay chuỗi trong DOM.
-- Trang hiện tại render qua máy chủ; mở file HTML trực tiếp sẽ thấy placeholder template. Luôn dùng URL preview.
-- Đổi giao diện sang EN không đổi VSL thành ASL. Trích dẫn giữ nguyên tiếng Anh; giao diện VI có “Tạm dịch bởi SignHearing”.
+## Deploy Vercel
 
-Xem [docs/I18N.md](docs/I18N.md) trước khi thêm trang/component.
+`vercel.json` ở gốc triển khai Next.js và FastAPI bằng Vercel Services trong
+cùng project. Trên Vercel đặt **Root Directory** về gốc repo (`./`), chọn nhánh
+`vercal` và xóa các override build/output cũ. Cấu hình từng service đã
+có sẵn; backend được build kèm template, module, bản dịch và video.
 
-## Thông tin liên hệ
+Không cần `BACKEND_URL` trên Vercel. App tự lấy domain deployment cho metadata;
+`SITE_URL` chỉ cần khi muốn chỉ định domain riêng. Xem [hướng dẫn đầy đủ và các
+URL cần kiểm tra](docs/VERCEL-DEPLOYMENT.md).
 
-Người dùng xác nhận **chưa có** email/URL liên hệ chính thức. CTA “Liên hệ với SignHearing” mở thông báo rõ, không gửi form hoặc báo thành công. `site-config.json` để `contact_url` rỗng; chỉ thêm mailto/HTTPS sau khi có thông tin đã được xác nhận.
+## Các file của homepage cần giữ khi đồng bộ
 
-Footer không đưa liên kết tới chính sách chưa tồn tại. Các trích dẫn có nguồn và không được trình bày như sự bảo trợ của tác giả.
+- `frontend/src/app/page.tsx`: homepage mới.
+- `frontend/src/components/landing/immersive/`: hero, câu chuyện, hành trình,
+  các thẻ giới thiệu tính năng và chuyển động.
+- `frontend/src/app/features/page.tsx`, `frontend/src/components/features/`:
+  trang Tính năng và các thẻ hướng dẫn.
+- `frontend/src/components/layout/`: header có mục Tính năng, footer, menu,
+  chuyển ngôn ngữ.
+- `frontend/src/styles/immersive.css`, `frontend/src/styles/features.css`:
+  giao diện homepage và trang Tính năng.
+- `frontend/public/images/feature-guides/`: ảnh hướng dẫn tính năng VI/EN.
+- `locales/vi.json`, `locales/en.json`: nội dung gốc, gồm các key `immersive.*`,
+  `features.*`, `nav.features`. Giữ các key mới của nhóm khi ghép bản dịch.
+
+`frontend/src/locales/` và `frontend/public/assets/` được tạo từ nguồn chung
+bởi `frontend/scripts/sync-content.mjs` trước mỗi lần `npm run dev` hoặc build.
+Không sửa trực tiếp các bản dịch được sinh tự động này.
+
+Các cập nhật khu học tập nằm trong `modules/`, `app_shell/`, `app_modules.py`,
+`content.py`, `i18n.py`, `serve.py` và `backend/`.
 
 ## Kiểm tra
 
 ```powershell
-python verify.py
-python -m py_compile serve.py i18n.py verify.py
+npm --prefix frontend run sync:content
+npm --prefix frontend test
+npm --prefix frontend run typecheck
+npm --prefix frontend run test:deployment
+npm --prefix frontend run test:http
+uv run --project backend pytest
 ```
 
-Kết quả mới: **297 assertions HTTP/i18n/content đạt**, 97 key mỗi ngôn ngữ. Kiểm tra parity, render VI/EN, metadata/ARIA, CTA, nguồn trích dẫn trong HTML, anchor, asset, cookie, reload/direct navigation, 404, redirect cũ và chặn file nội bộ.
+`test:http` cần hai server đang chạy ở cổng 3000 và 8001.
+Xem thêm [kiến trúc và phát triển](docs/MODERN-DEVELOPMENT.md),
+[homepage mới](docs/IMMERSIVE-LANDING.md),
+[trang Tính năng](docs/FEATURES-REPORT.md), và [cấu trúc module](MODULES.md).
 
-Browser/native hiện chưa kết nối được: chưa có ảnh chụp desktop/mobile hoặc bằng chứng tương tác UI. Không coi các assertion HTTP là kiểm tra responsive bằng mắt. Xem [báo cáo duyệt](docs/REVIEW.md).
+## Cấu trúc local đã dọn
 
-## Cấu trúc
+Ứng dụng chạy trực tiếp ở gốc repo. Các checkout cũ, bản publish trùng, cache
+cài đặt, công cụ thử nghiệm và cấu hình Vercel cho homepage Python cũ đã được dọn.
+Cấu hình Vercel hiện tại triển khai đầy đủ Next.js và FastAPI.
+Các component landing React cũ không còn được import cũng đã được bỏ.
 
-```text
-index.html / under-construction.html / 404.html   Template từng trang
-partials/                                       Layout/component dùng chung
-locales/vi.json / locales/en.json                Từ điển UI
-i18n.py / serve.py                               Renderer và máy chủ preview
-site-config.json                                Cấu hình liên hệ, hiện để trống
-static/landing.css / story.css / landing.js       Bố cục, tương tác và motion
-static/assets/                                  Logo/mascot PNG riêng, giữ tỷ lệ
-verify.py / docs/                                Kiểm tra và bàn giao
-mascot.jpg / SignHearing_PRD.md                   Nguồn tham chiếu được giữ nguyên
+Giữ `.tools/node-v*-win-x64/` và `.tools/python/` vì máy đang dùng Node/Python
+portable tại đây; giữ `frontend/node_modules/`, `frontend/.next/` và
+`backend/.venv/` để tiếp tục chạy app. `.runtime/` chỉ giữ PID và log đang dùng.
+
+Các file Python ở gốc cùng `partials/`, `locales/`, `static/` vẫn được backend
+dùng để render đăng nhập và khu học. Chúng thuộc ứng dụng hiện tại.
+
+Gói khôi phục nguồn trước khi dọn nằm tại
+`.backups/cleanup-20261108/source-recovery.zip`. Trong ZIP, `current/` chứa
+mã nguồn gốc repo; các mục `previous*` và `historical/` giữ các thay đổi local
+và bản sao lưu từ các checkout trước. Manifest và báo cáo dọn nằm cùng thư mục.
+
+## Hai nhánh làm việc
+
+- `local`: phát triển và chạy ứng dụng trên máy, theo dõi `origin/local`.
+- `vercal`: bản dùng để deploy Vercel, theo dõi `origin/vercal`.
+
+Hai nhánh ban đầu dùng cùng mã nguồn, gồm homepage mới và trang Tính năng.
+Sau khi sửa, kiểm tra và commit trên `local`, cập nhật bản deploy bằng:
+
+```powershell
+git push origin local
+git switch vercal
+git merge local
+git push origin vercal
+git switch local
 ```
 
-Chưa tiếp tục phát triển khu học trước khi landing được duyệt.
+Đặt **Production Branch** của project Vercel thành `vercal`.

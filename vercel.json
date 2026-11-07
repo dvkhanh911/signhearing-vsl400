@@ -1,17 +1,30 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
-  "buildCommand": "",
-  "outputDirectory": ".",
-  "functions": {
-    "api/index.py": {
-      "excludeFiles": "{.checkouts/**,.publish/**,.tools/**,.venv/**,.vercel/**,**/__pycache__/**,**/*.pyc,vercel-setup.zip}"
+  "services": {
+    "frontend": {
+      "root": "frontend",
+      "framework": "nextjs",
+      "installCommand": "npm ci",
+      "buildCommand": "npm run build"
+    },
+    "backend": {
+      "root": "backend",
+      "framework": "fastapi",
+      "entrypoint": "app.main:app",
+      "buildCommand": "python scripts/prepare_legacy.py",
+      "functions": {
+        "app/main.py": {
+          "includeFiles": "legacy_site/**",
+          "excludeFiles": "{tests/**,**/__pycache__/**,**/*.pyc}"
+        }
+      }
     }
   },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/api/index"
-    }
+  "rewrites": [
+    { "source": "/api/:path*", "destination": { "service": "backend" } },
+    { "source": "/app/:path*", "destination": { "service": "backend" } },
+    { "source": "/login/:path*", "destination": { "service": "backend" } },
+    { "source": "/static/:path*", "destination": { "service": "backend" } },
+    { "source": "/(.*)", "destination": { "service": "frontend" } }
   ]
 }

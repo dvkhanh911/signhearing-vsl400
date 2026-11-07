@@ -1,7 +1,10 @@
 # Modern development — SignHearing
 
-Checkout: `D:\SignHearing\.checkouts\team-20261031`, branch
-`feature/modern-fullstack`. Original top-level `D:\SignHearing` is untouched.
+Working directory: `D:\SignHearing`, development branch `local`, deployment branch `vercal`.
+The app runs directly from this repository; duplicate checkouts were removed.
+For the current single-project Vercel configuration and build packaging, see
+[Vercel deployment](VERCEL-DEPLOYMENT.md). Cloud routing is handled by the root
+service route table; the Next.js backend rewrites below apply to local runs.
 
 ## Architecture
 
@@ -28,7 +31,7 @@ Exact frontend versions are locked by `package-lock.json`; backend versions by
 `uv.lock`. Use `npm ci` and `uv sync --locked` on another machine.
 
 ```powershell
-cd D:\SignHearing\.checkouts\team-20261031\frontend
+cd D:\SignHearing\frontend
 npm ci
 npm run dev
 ```
@@ -36,7 +39,7 @@ npm run dev
 In another terminal:
 
 ```powershell
-cd D:\SignHearing\.checkouts\team-20261031\backend
+cd D:\SignHearing\backend
 uv sync --locked --python 3.12
 uv run uvicorn app.main:app --host 127.0.0.1 --port 8001 --reload
 ```
@@ -48,7 +51,7 @@ the API process. Keep Next and API on loopback during local development.
 
 Optional examples: copy `frontend/.env.example` to `frontend/.env.local`, and
 `backend/.env.example` to `backend/.env`. API liveness and modules need no DB
-URL. `BACKEND_URL` is server-only and Next rewrites are fixed at build time;
+URL. `LOCAL_BACKEND_URL` is server-only and local Next rewrites are fixed at build time;
 rebuild production after changing the target. Never expose database credentials
 using `NEXT_PUBLIC_*`. A shared HTTPS deployment needs an explicit reverse-proxy
 trust configuration and tested secure-cookie behavior; it is not deployed here.
@@ -64,7 +67,9 @@ $env:PATH = 'D:\SignHearing\.tools\node-v22.23.4-win-x64;' + $env:PATH
 `scripts/start-modern.ps1` starts both processes with hidden windows and logs
 under ignored `.runtime/`. For a production preview, first run `npm run build`
 in frontend, then invoke `powershell -NoProfile -File scripts/start-modern.ps1 -Production`.
-It refuses occupied ports; `.runtime/processes.json` records the spawned PIDs.
+It reuses this project's recorded servers, starts missing services, and checks
+homepage/API readiness. Ports owned by unrelated applications are rejected.
+`.runtime/processes.json` records the spawned PIDs.
 For ordinary foreground development, stop each server with Ctrl+C.
 
 ## PostgreSQL

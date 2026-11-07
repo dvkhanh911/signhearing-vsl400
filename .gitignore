@@ -62,3 +62,8 @@ playwright-report/
 .tools/
 postgres-data/
 !backend/app/models/
+
+# Generated deployment bundle and local Vercel project settings
+/backend/legacy_site/
+.vercel/
+.checkouts/
