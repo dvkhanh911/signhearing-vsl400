@@ -42,6 +42,18 @@ demo vẫn dùng cơ chế lưu trong trình duyệt hiện tại; deployment n�
 tài khoản server hoặc thay thế bằng dữ liệu database. Dữ liệu trình duyệt theo
 origin, vì vậy địa chỉ local và domain Vercel có vùng lưu riêng.
 
+## Ảnh trên homepage và trang Tính năng
+
+`frontend/next.config.ts` đặt `images.unoptimized: true` để trình duyệt tải
+ảnh trực tiếp từ `/assets/*` và `/images/feature-guides/*`. Trên deployment
+được kiểm tra, ảnh gốc trả HTTP 200 nhưng URL `/_next/image?...` trả HTTP 404.
+Cấu hình này bỏ qua endpoint tối ưu ảnh đang lỗi, giữ nguyên ảnh và bố cục.
+Ảnh được gửi ở kích thước file gốc nên dung lượng tải có thể lớn hơn ảnh đã tối ưu.
+
+Sau deploy, chạy `test:http` với `TEST_URL` của deployment. Bài kiểm tra tải
+các URL `src` và `srcset` thực tế của ảnh trên homepage và trang Tính năng,
+ở cả VI/EN; kiểm tra HTTP 200, Content-Type ảnh và nội dung không rỗng.
+
 ## Đóng gói backend
 
 Build Command của backend chạy `python scripts/prepare_legacy.py`. Script tạo

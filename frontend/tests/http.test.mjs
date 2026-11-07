@@ -3,6 +3,40 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const base = process.env.TEST_URL || "http://127.0.0.1:3000";
+for (const route of ["/", "/features"]) {
+  for (const locale of ["vi", "en"]) {
+    test(`rendered images load as images (${route}, ${locale})`, async () => {
+      const response = await fetch(`${base}${route}?lang=${locale}`);
+      assert.equal(response.status, 200);
+      const html = await response.text();
+      const images = html.match(/<img\b[^>]*>/gi) || [];
+      assert.ok(images.length > 0, "Page must render its images");
+      const sources = new Set();
+      for (const image of images) {
+        const source = image.match(/\bsrc="([^"]+)"/i)?.[1];
+        assert.ok(source, `Image has no source: ${image}`);
+        sources.add(source.replaceAll("&amp;", "&"));
+        const candidates = image.match(/\bsrcset="([^"]+)"/i)?.[1];
+        for (const candidate of candidates?.split(",") || []) {
+          sources.add(
+            candidate.trim().split(/\s+/)[0].replaceAll("&amp;", "&"),
+          );
+        }
+      }
+      for (const source of sources) {
+        const image = await fetch(new URL(source, base));
+        assert.equal(image.status, 200, `Image failed: ${source}`);
+        assert.match(
+          image.headers.get("content-type") || "",
+          /^image\//,
+          `Image URL returned a non-image response: ${source}`,
+        );
+        assert.ok((await image.arrayBuffer()).byteLength > 0, source);
+      }
+    });
+  }
+}
+
 for (const locale of ["vi", "en"]) {
   test(`SSR landing, metadata, citations, CTA semantics and assets (${locale})`, async () => {
     const t = JSON.parse(
