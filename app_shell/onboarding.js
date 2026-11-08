@@ -1,6 +1,7 @@
 /* Navigation-only onboarding. No feature state, authentication or network writes. */
-(function () {
+(async function () {
   'use strict';
+  if (window.SH) { try { await window.SH.ready; } catch (error) { return; } }
   const SH = window.SH;
   const restart = document.querySelector('[data-tour-start]');
   if (!SH || !restart || typeof HTMLDialogElement === 'undefined' || typeof HTMLDialogElement.prototype.showModal !== 'function') return;

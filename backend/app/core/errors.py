@@ -6,6 +6,8 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException
 
+from app.services.supabase import SupabaseError
+
 logger = logging.getLogger(__name__)
 
 
@@ -19,6 +21,10 @@ def error_response(request: Request, status: int, code: str, message: str) -> JS
 
 
 def install_error_handlers(app: FastAPI) -> None:
+    @app.exception_handler(SupabaseError)
+    async def supabase_error(request: Request, exc: SupabaseError) -> JSONResponse:
+        return error_response(request, exc.status, exc.code, exc.code)
+
     @app.exception_handler(HTTPException)
     async def http_error(request: Request, exc: HTTPException) -> JSONResponse:
         message = (

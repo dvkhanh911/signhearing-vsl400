@@ -1,4 +1,5 @@
-(function(){'use strict';
+(async function(){'use strict';
+  if (window.SH) { try { await window.SH.ready; } catch (error) { return; } }
   const SH = window.SH;
   if (!SH) return;
   const catalogue = document.querySelector('.m-dictionary .dictionary-page');
@@ -81,7 +82,11 @@
       favorite.textContent = SH.t(on ? 'dictionary.favorite.remove' : 'dictionary.favorite.add');
       paintFavorites(detail);
     }
-    favorite.addEventListener('click', () => SH.store.toggleFavorite(detail.dataset.slug));
+    favorite.addEventListener('click', async () => {
+      favorite.disabled = true;
+      await SH.store.toggleFavorite(detail.dataset.slug);
+      favorite.disabled = false;
+    });
     favorite.hidden = false;
     window.addEventListener('sh:store', paint);
     paint();

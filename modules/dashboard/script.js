@@ -1,5 +1,6 @@
-(function () {
+(async function () {
   'use strict';
+  if (window.SH) { try { await window.SH.ready; } catch (error) { return; } }
   const root = document.querySelector('.m-dashboard .dashboard-page');
   if (!root || !window.SH) return;
   const { data, t, url, store, lesson, sign, signsOf } = window.SH;

@@ -13,13 +13,13 @@
   "account.joined": "Ngày tham gia",
   "account.info.eyebrow": "THÔNG TIN",
   "account.info.title": "Thông tin tài khoản",
-  "account.local.note": "Thông tin hiện là dữ liệu giao diện mẫu và chưa được đồng bộ với hệ thống đăng nhập.",
+  "account.local.note": "Hồ sơ được liên kết với Supabase Auth.",
   "account.membership.eyebrow": "THÀNH VIÊN",
   "account.membership.title": "Tình trạng tài khoản",
   "account.status": "Trạng thái",
   "account.status.active": "Đang hoạt động",
   "account.plan": "Gói hiện tại",
-  "account.current.plan": "Premium 1 tháng",
+  "account.current.plan": "Free",
   "account.current.note": "Trạng thái mặc định cho bản giao diện hiện tại",
   "account.logout": "Đăng xuất",
   "account.billing": "Thanh toán",
@@ -37,5 +37,6 @@
   "account.plan.choose": "Chọn gói",
   "account.plan.current": "Gói hiện tại",
   "account.plan.using": "Đang sử dụng",
-  "account.plan.unavailable": "Gói {plan} đã được ghi nhận. Chức năng đăng ký và thanh toán hiện chưa được kết nối."
+  "account.plan.unavailable": "Gói {plan} đã được ghi nhận. Chức năng đăng ký và thanh toán hiện chưa được kết nối.",
+  "account.legacy.note": "Phát hiện dữ liệu học trên trình duyệt từ phiên bản cũ. Dữ liệu này được giữ nguyên và chưa nhập vào tài khoản. Xem SUPABASE_SETUP.md để biết phương án nhập có xác nhận."
 }

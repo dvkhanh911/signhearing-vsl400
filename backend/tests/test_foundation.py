@@ -13,7 +13,7 @@ from app.main import create_app
 
 
 @pytest.fixture
-def client():
+def client(verified_identity):
     with TestClient(create_app(), raise_server_exceptions=False) as current:
         yield current
 
@@ -115,7 +115,7 @@ def test_language_cookie_and_missing_page(client):
 
 
 @pytest.mark.parametrize("locale", ["vi", "en"])
-def test_merged_demo_login_uses_the_existing_origin(client, locale):
+def test_real_login_uses_the_existing_origin(client, locale):
     response = client.get(f"/login?lang={locale}&next=%2Fapp%2Faccount")
     assert response.status_code == 200
     assert response.headers["content-language"] == locale

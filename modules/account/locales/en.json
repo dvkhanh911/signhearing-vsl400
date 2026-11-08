@@ -13,13 +13,13 @@
   "account.joined": "Joined",
   "account.info.eyebrow": "INFORMATION",
   "account.info.title": "Account information",
-  "account.local.note": "This is currently sample interface data and is not synced with a sign-in system.",
+  "account.local.note": "Profile linked to Supabase Auth.",
   "account.membership.eyebrow": "MEMBERSHIP",
   "account.membership.title": "Account status",
   "account.status": "Status",
   "account.status.active": "Active",
   "account.plan": "Current plan",
-  "account.current.plan": "Premium monthly",
+  "account.current.plan": "Free",
   "account.current.note": "Default status for the current interface",
   "account.logout": "Sign out",
   "account.billing": "Billing",
@@ -37,5 +37,6 @@
   "account.plan.choose": "Choose plan",
   "account.plan.current": "Current plan",
   "account.plan.using": "In use",
-  "account.plan.unavailable": "The {plan} plan was noted. Subscription and payment are not connected yet."
+  "account.plan.unavailable": "The {plan} plan was noted. Subscription and payment are not connected yet.",
+  "account.legacy.note": "Learning data from the previous browser version was found. It is preserved and has not been imported. See SUPABASE_SETUP.md for the proposed confirmed import process."
 }

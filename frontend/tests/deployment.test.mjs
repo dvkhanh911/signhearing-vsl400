@@ -3,6 +3,28 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 import { readFile } from "node:fs/promises";
 import { backendRewrites, siteOrigin } from "../src/lib/deployment.ts";
+import { publicSupabaseConfig } from "../src/lib/supabase-config.ts";
+
+test("Next.js reads the public Supabase variables and rejects privileged keys", () => {
+  const previousUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const previousKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  try {
+    process.env.NEXT_PUBLIC_SUPABASE_URL = "https://env-project.supabase.co";
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_test";
+    assert.deepEqual(publicSupabaseConfig(), {
+      url: "https://env-project.supabase.co",
+      publishableKey: "sb_publishable_test",
+    });
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = "sb_secret_rejected";
+    assert.throws(publicSupabaseConfig, /publishable key/);
+  } finally {
+    if (previousUrl === undefined) delete process.env.NEXT_PUBLIC_SUPABASE_URL;
+    else process.env.NEXT_PUBLIC_SUPABASE_URL = previousUrl;
+    if (previousKey === undefined)
+      delete process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+    else process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = previousKey;
+  }
+});
 
 const require = createRequire(import.meta.url);
 const { pathToRegexp } = require("next/dist/compiled/path-to-regexp");

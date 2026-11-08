@@ -1,7 +1,7 @@
 {
   "settings.nav": "Cài đặt",
   "settings.title": "Cài đặt & dữ liệu",
-  "settings.lead": "Ngôn ngữ giao diện, dữ liệu tiến độ lưu trên trình duyệt và quyền camera.",
+  "settings.lead": "Ngôn ngữ giao diện, dữ liệu tiến độ theo tài khoản và quyền camera.",
   "settings.sections": "Các mục cài đặt",
   "settings.language.title": "Ngôn ngữ giao diện",
   "settings.language.note": "Chọn ngôn ngữ để đọc giao diện. Tiến độ đã lưu được giữ nguyên khi đổi ngôn ngữ.",
@@ -10,7 +10,7 @@
   "settings.language.current": "✓ Đang sử dụng",
   "settings.language.choose": "Chuyển sang ngôn ngữ này",
   "settings.data.title": "Dữ liệu của bạn",
-  "settings.data.note": "Dữ liệu chỉ lưu trên trình duyệt này, chưa đồng bộ. Xóa dữ liệu trình duyệt sẽ mất tiến độ; tải bản sao để lưu lại.",
+  "settings.data.note": "Tiến độ được lưu trên Supabase theo tài khoản. Xóa dữ liệu trình duyệt không xóa tiến độ đã lưu trên server.",
   "settings.storage.unavailable": "Trình duyệt không lưu được dữ liệu. Tiến độ hiện chỉ có trong bộ nhớ của trang và có thể mất khi tải lại hoặc đóng trang. Hãy tải tệp JSON nếu muốn giữ bản sao.",
   "settings.summary.lessons": "Bài hoàn thành / đang mở",
   "settings.summary.signs": "Ký hiệu đã xem",

@@ -160,6 +160,7 @@ def render(locale, path, base_values):
     if meta['has_css']:
         assets.append(f'<link rel="stylesheet" href="/static/m/{meta["id"]}/style.css">')
     assets.append('<script src="/static/app/core.js" defer></script>')
+    assets.append('<script src="/static/app/streak.js" defer></script>')
     if meta['has_js']:
         assets.append(f'<script src="/static/m/{meta["id"]}/script.js" defer></script>')
     assets.append('<link rel="stylesheet" href="/static/app/onboarding.css">')

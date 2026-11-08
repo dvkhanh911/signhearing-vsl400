@@ -3,6 +3,29 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const base = process.env.TEST_URL || "http://127.0.0.1:3000";
+test("unauthenticated app routes redirect and cookie mutations reject cross-site origins", async () => {
+  const redirect = await fetch(`${base}/app/progress?lang=en`, {
+    redirect: "manual",
+  });
+  assert.equal(redirect.status, 303);
+  const target = new URL(redirect.headers.get("location"), base);
+  assert.equal(target.pathname, "/login");
+  assert.equal(target.searchParams.get("next"), "/app/progress?lang=en");
+  const session = await fetch(`${base}/api/auth/session`);
+  assert.equal(session.status, 401);
+  const csrf = await fetch(`${base}/api/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Origin: "https://attacker.invalid",
+    },
+    body: JSON.stringify({
+      email: "nobody@example.invalid",
+      password: "test-only",
+    }),
+  });
+  assert.equal(csrf.status, 403);
+});
 for (const route of ["/", "/features"]) {
   for (const locale of ["vi", "en"]) {
     test(`rendered images load as images (${route}, ${locale})`, async () => {

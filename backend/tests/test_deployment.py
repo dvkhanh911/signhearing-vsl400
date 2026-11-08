@@ -34,6 +34,9 @@ from fastapi.testclient import TestClient
 from app.main import create_app
 from app.services import legacy
 import serve
+from app.services import supabase as sb
+from unittest.mock import AsyncMock
+sb.identity = AsyncMock(return_value=sb.Identity('test-token', {'id':'test-user'}))
 expected = Path(sys.argv[1]) / 'legacy_site'
 assert legacy.ROOT == expected
 assert Path(serve.__file__).parent == expected

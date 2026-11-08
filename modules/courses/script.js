@@ -2,8 +2,9 @@
    - Wrap everything in an IIFE, no globals.
    - Read data/progress only through window.SH (app_shell/core.js).
    - All UI text comes from SH.t('<module>.*' or 'shell.*'). */
-(function () {
+(async function () {
   'use strict';
+  if (window.SH) { try { await window.SH.ready; } catch (error) { return; } }
   const root = document.querySelector('.m-courses .courses');
   if (!root || !window.SH) return;
   const { t, store } = window.SH;

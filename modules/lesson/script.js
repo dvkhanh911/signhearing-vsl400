@@ -1,4 +1,5 @@
-(function(){'use strict';
+(async function(){'use strict';
+  if (window.SH) { try { await window.SH.ready; } catch (error) { return; } }
   const root = document.querySelector('.m-lesson .lesson-page');
   if (!root || !window.SH) return;
   const SH = window.SH;
@@ -121,13 +122,19 @@
   articles.forEach((article) => {
     const seen = article.querySelector('[data-mark-seen]');
     seen.hidden = false;
-    seen.addEventListener('click', () => {
-      SH.store.markSignSeen(article.dataset.slug);
-      if (selected < articles.length - 1) choose(selected + 1, true);
+    seen.addEventListener('click', async () => {
+      seen.disabled = true;
+      const saved = await SH.store.markSignSeen(article.dataset.slug);
+      seen.disabled = false;
+      if (saved && selected < articles.length - 1) choose(selected + 1, true);
     });
     const favorite = article.querySelector('[data-favorite]');
     favorite.hidden = false;
-    favorite.addEventListener('click', () => SH.store.toggleFavorite(article.dataset.slug));
+    favorite.addEventListener('click', async () => {
+      favorite.disabled = true;
+      await SH.store.toggleFavorite(article.dataset.slug);
+      favorite.disabled = false;
+    });
     setupVideo(article);
   });
   links.forEach((link, index) => link.addEventListener('click', (event) => {

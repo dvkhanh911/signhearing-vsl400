@@ -1,4 +1,5 @@
-(function(){'use strict';
+(async function(){'use strict';
+  if (window.SH) { try { await window.SH.ready; } catch (error) { return; } }
   const SH = window.SH;
   if (!SH) return;
   const list = document.querySelector('.m-practice .practice-page');
@@ -59,6 +60,7 @@
   let cameraTimer = null;
   let countdownTimer = null;
   let leaving = false;
+  let practiceId = crypto.randomUUID();
 
   function cancelCountdown() {
     clearTimeout(countdownTimer);
@@ -210,10 +212,16 @@
     empty.textContent = SH.t('practice.history.empty');
   }
 
-  find('[data-save]').addEventListener('click', () => {
+  find('[data-save]').addEventListener('click', async () => {
+    const button = find('[data-save]');
+    if (button.disabled) return;
+    button.disabled = true;
     const checklist = {};
     keys.forEach((key) => { checklist[key] = find('[data-check="' + key + '"]').checked; });
-    SH.store.addPractice(slug, checklist);
+    const ok = await SH.store.addPractice(slug, checklist, practiceId);
+    button.disabled = false;
+    if (!ok) return;
+    practiceId = crypto.randomUUID();
     cancelCountdown();
     resetChecklist();
     saved.textContent = SH.t('practice.saved', { n: keys.filter((key) => checklist[key]).length });

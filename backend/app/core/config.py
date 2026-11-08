@@ -15,6 +15,37 @@ class Settings(BaseSettings):
     api_port: int = Field(default=8001, ge=1, le=65535)
     # Empty by default: API/landing startup never needs a database or credentials.
     database_url: str = ""
+    supabase_url: str = ""
+    supabase_publishable_key: str = ""
+
+    @field_validator("supabase_url")
+    @classmethod
+    def supabase_origin(cls, value: str) -> str:
+        from urllib.parse import urlsplit
+
+        if not value:
+            return value
+        parsed = urlsplit(value)
+        if (
+            parsed.scheme != "https"
+            or not parsed.hostname
+            or parsed.username
+            or parsed.password
+            or parsed.path not in ("", "/")
+            or parsed.query
+            or parsed.fragment
+        ):
+            raise ValueError("SUPABASE_URL must be an HTTPS origin")
+        return value.rstrip("/")
+
+    @field_validator("supabase_publishable_key")
+    @classmethod
+    def public_key_only(cls, value: str) -> str:
+        # New publishable keys only. Never accept a privileged credential by accident.
+        if value and not value.startswith("sb_publishable_"):
+            raise ValueError("Use a Supabase publishable key (sb_publishable_), never a secret key")
+        return value
+
     cors_origins: list[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
 
     @field_validator("database_url")

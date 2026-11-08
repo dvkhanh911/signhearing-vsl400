@@ -4,7 +4,7 @@ from uuid import uuid4
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import health, learning
+from app.api import auth, health, learning, progress
 from app.core.config import get_settings
 from app.core.errors import install_error_handlers
 from app.db.session import get_engine
@@ -26,8 +26,8 @@ def create_app() -> FastAPI:
         CORSMiddleware,
         allow_origins=settings.cors_origins,
         allow_credentials=False,
-        allow_methods=["GET", "HEAD", "OPTIONS"],
-        allow_headers=["Content-Type"],
+        allow_methods=["GET", "HEAD", "OPTIONS", "POST"],
+        allow_headers=["Content-Type", "Authorization", "X-SH-User"],
     )
 
     @app.middleware("http")
@@ -36,10 +36,17 @@ def create_app() -> FastAPI:
         response = await call_next(request)
         response.headers["X-Request-ID"] = request.state.request_id
         response.headers["X-Content-Type-Options"] = "nosniff"
+        if request.url.path.startswith("/api/auth/") or request.url.path.startswith(
+            "/api/learning/"
+        ):
+            response.headers["Cache-Control"] = "private, no-store"
+            response.headers["Vary"] = "Cookie, Authorization"
         return response
 
     install_error_handlers(app)
     app.include_router(health.router)
+    app.include_router(auth.router)
+    app.include_router(progress.router)
     app.include_router(learning.router)
     return app
 

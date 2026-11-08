@@ -1,4 +1,5 @@
-(function(){'use strict';
+(async function(){'use strict';
+  if (window.SH) { try { await window.SH.ready; } catch (error) { return; } }
   const SH = window.SH;
   const root = document.querySelector('.m-settings .settings-page');
   if (!SH || !root) return;

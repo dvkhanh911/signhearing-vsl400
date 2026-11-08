@@ -16,7 +16,7 @@
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write src scripts tests *.json *.mjs *.ts",
     "format:check": "prettier --check src scripts tests *.json *.mjs *.ts",
-    "test": "node --test tests/content.test.mjs",
+    "test": "node --test tests/content.test.mjs tests/auth-store.test.mjs",
     "test:http": "node --test tests/http.test.mjs",
     "test:deployment": "node --experimental-strip-types --test tests/deployment.test.mjs",
     "capture:features": "node scripts/capture-feature-guides.mjs",

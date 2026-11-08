@@ -33,7 +33,7 @@ def translations(tmp_path, monkeypatch):
     return tmp_path
 
 
-def test_app_request_refreshes_stale_tour_translations(monkeypatch):
+def test_app_request_refreshes_stale_tour_translations(monkeypatch, verified_identity):
     # Reproduce a worker started before the new template's translation keys existed.
     for locale in ("vi", "en"):
         monkeypatch.delitem(i18n.DICTIONARIES[locale], "shell.tour.restart")

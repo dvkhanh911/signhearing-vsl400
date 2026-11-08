@@ -29,12 +29,19 @@
       <p class="login-form-note">{{login.form.note}}</p>
       <form id="login-form" class="login-form" data-required-message="{{login.required}}" novalidate>
         <label for="login-username">{{login.username}}</label>
-        <div class="login-input-wrap"><span aria-hidden="true">@</span><input id="login-username" name="username" type="text" autocomplete="username" placeholder="{{login.username.placeholder}}" required></div>
+        <div class="login-input-wrap"><span aria-hidden="true">@</span><input id="login-username" name="username" type="email" autocomplete="email" placeholder="{{login.username.placeholder}}" required maxlength="254"></div>
         <label for="login-password">{{login.password}}</label>
         <div class="login-input-wrap"><span aria-hidden="true">●</span><input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="{{login.password.placeholder}}" required></div>
+        <div data-register-fields hidden>
+          <label for="register-name">{{login.display_name}}</label>
+          <div class="login-input-wrap"><input id="register-name" name="display_name" autocomplete="nickname" maxlength="80"></div>
+          <label for="register-confirm">{{login.confirm}}</label>
+          <div class="login-input-wrap"><input id="register-confirm" name="confirm" type="password" autocomplete="new-password" maxlength="128"></div>
+        </div>
         <p class="login-error" data-login-error role="alert" hidden></p>
         <button class="button login-submit" type="submit">{{login.submit}} <span aria-hidden="true">→</span></button>
       </form>
+      <button class="login-mode-toggle" type="button" data-auth-toggle>{{login.register.switch}}</button>
       <p class="login-privacy">{{login.privacy}}</p>
     </div>
   </section>

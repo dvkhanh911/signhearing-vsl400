@@ -1,7 +1,7 @@
 {
   "settings.nav": "Settings",
   "settings.title": "Settings & data",
-  "settings.lead": "Interface language, progress data stored in this browser and camera permission.",
+  "settings.lead": "Interface language, account learning progress and camera permission.",
   "settings.sections": "Settings sections",
   "settings.language.title": "Interface language",
   "settings.language.note": "Choose a language for the interface. Switching languages keeps your saved progress.",
@@ -10,7 +10,7 @@
   "settings.language.current": "✓ Currently selected",
   "settings.language.choose": "Switch to this language",
   "settings.data.title": "Your data",
-  "settings.data.note": "Data stays in this browser without syncing. Clearing browser data removes progress; download a copy to keep it.",
+  "settings.data.note": "Progress is saved to your Supabase account. Clearing browser data does not delete progress already saved on the server.",
   "settings.storage.unavailable": "This browser cannot save data. Progress is currently held only in the page's memory and may be lost on reload or when the page closes. Download a JSON file to keep a copy.",
   "settings.summary.lessons": "Lessons completed / open",
   "settings.summary.signs": "Signs viewed",

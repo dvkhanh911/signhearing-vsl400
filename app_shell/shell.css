@@ -5,6 +5,13 @@
 .app-page{background:#f5f9ff;--sidebar-open:248px;--sidebar:var(--sidebar-open);--app-max:1180px}
 .app-frame{display:grid;visibility:hidden;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:100vh;background:radial-gradient(circle at 86% 16%,#e8f3ff 0,transparent 28%),radial-gradient(circle at 72% 82%,#fff1f6 0,transparent 24%),linear-gradient(145deg,#f9fcff 0%,#f2f7ff 62%,#fff8fb 130%);transition:grid-template-columns .22s ease}
 .app-page.is-auth-ready .app-frame{visibility:visible}
+.sh-auth-loading{margin:32px auto;max-width:680px;padding:24px}
+.sh-streak{margin:18px 0;padding:22px;border:1px solid #cfe1f3;border-radius:20px;background:linear-gradient(130deg,#edf5ff,#fff5fa)}
+.sh-streak dl{display:flex;flex-wrap:wrap;gap:24px;margin:0}
+.sh-streak dd{font-size:1.8rem;font-weight:800;margin:4px 0;color:#1556ad}
+.sh-streak p{margin:12px 0 0;color:#3c5878}
+.sh-activity-history{max-height:320px;overflow:auto;padding-left:24px}
+.sh-activity-history li{padding:8px 0}
 .app-page.is-sidebar-collapsed{--sidebar:0px}
 
 /* Sidebar */

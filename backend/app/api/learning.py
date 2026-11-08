@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Request
-from fastapi.responses import FileResponse, HTMLResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse, Response
 
 from app.services import legacy
+from app.services import supabase as sb
 
 router = APIRouter(include_in_schema=False)
 
@@ -55,8 +56,30 @@ def login_page(request: Request) -> Response:
 
 @router.api_route("/app", methods=["GET", "HEAD"])
 @router.api_route("/app/{path:path}", methods=["GET", "HEAD"])
-def learning_page(request: Request, path: str = "") -> Response:
+async def learning_page(request: Request, path: str = "") -> Response:
+    try:
+        who = await sb.identity(request)
+    except sb.SupabaseError as error:
+        if error.status != 401:
+            raise
+        from urllib.parse import urlencode
+
+        response = RedirectResponse(
+            "/login?"
+            + urlencode(
+                {
+                    "lang": locale_for(request),
+                    "next": request.url.path
+                    + ("?" + request.url.query if request.url.query else ""),
+                }
+            ),
+            status_code=303,
+        )
+        sb.clear_session(response)
+        return response
     response = page_response(request, "/app/" + path if path else "/app")
+    if who.refreshed:
+        sb.set_session(response, request, who.refreshed)
     if request.method == "HEAD":
         response.body = b""
     return response

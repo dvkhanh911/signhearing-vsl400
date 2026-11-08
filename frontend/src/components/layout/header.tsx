@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { headers } from "next/headers";
 import { dictionary, localized, type Locale } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitch } from "./language-switch";
 import { MobileNavigation } from "./mobile-navigation";
+import { SessionLink } from "./session-link";
 
 export async function Header({ locale }: { locale: Locale }) {
   const t = dictionary(locale);
@@ -66,10 +66,7 @@ export async function Header({ locale }: { locale: Locale }) {
         <div className="header-tools">
           <LanguageSwitch locale={locale} {...language} />
           <Button asChild className="header-cta">
-            <a href={localized("/app", locale)}>
-              {t["action.explore"]}
-              <ArrowUpRight aria-hidden="true" />
-            </a>
+            <SessionLink locale={locale} label={t["action.explore"]} />
           </Button>
         </div>
         <MobileNavigation

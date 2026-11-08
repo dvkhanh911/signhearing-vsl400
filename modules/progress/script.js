@@ -1,13 +1,14 @@
-(function(){'use strict';
+(async function(){'use strict';
+  if (window.SH) { try { await window.SH.ready; } catch (error) { return; } }
   const SH = window.SH;
   const root = document.querySelector('.progress-page');
   if (!SH || !root) return;
   const sampleSigns = new Set(root.dataset.sampleSigns.split(',').filter(Boolean));
   const sampleLessons = new Set(root.dataset.sampleLessons.split(',').filter(Boolean));
   const locale = SH.locale === 'vi' ? 'vi-VN' : 'en-US';
-  const dateTime = new Intl.DateTimeFormat(locale, {dateStyle:'medium', timeStyle:'short'});
-  const dayDate = new Intl.DateTimeFormat(locale, {dateStyle:'full'});
-  const shortDate = new Intl.DateTimeFormat(locale, {dateStyle:'medium'});
+  const dateTime = new Intl.DateTimeFormat(locale, {dateStyle:'medium', timeStyle:'short',timeZone:'Asia/Ho_Chi_Minh'});
+  const dayDate = new Intl.DateTimeFormat(locale, {dateStyle:'full',timeZone:'Asia/Ho_Chi_Minh'});
+  const shortDate = new Intl.DateTimeFormat(locale, {dateStyle:'medium',timeZone:'Asia/Ho_Chi_Minh'});
   const checks = ['handshape', 'location', 'orientation', 'movement', 'expression'];
   function node(tag, text, className) {
     const el = document.createElement(tag);
@@ -95,33 +96,22 @@
     target.replaceChildren(list);
     if (missing) target.append(node('p', translated('seen.unavailable', {n:missing}), 'progress-note progress-missing'));
   }
-  function dayKey(date) { return [date.getFullYear(),date.getMonth(),date.getDate()].join('-'); }
-  function calendar(snapshot) {
-    const today = new Date(); today.setHours(12,0,0,0);
-    const days = Array.from({length:30}, (_,i) => {
-      const date = new Date(today); date.setDate(today.getDate() - 29 + i); return date;
-    });
-    const counts = new Map(days.map(date => [dayKey(date),0]));
-    const records = SH.store.practiceLog().concat(Object.values(snapshot.quiz).flat(), Object.values(snapshot.lessons));
-    records.forEach(record => {
-      if (!record.at) return;
-      const date = new Date(record.at);
-      if (!Number.isFinite(date.getTime())) return;
-      const key = dayKey(date); if (counts.has(key)) counts.set(key, counts.get(key) + 1);
-    });
-    root.querySelector('[data-calendar-range]').textContent = translated('calendar.range', {start:shortDate.format(days[0]),end:shortDate.format(today)});
+  function calendar() {
+    const days = SH.store.streak().days;
+    const dates = days.map(day => new Date(day.date + 'T12:00:00+07:00'));
+    root.querySelector('[data-calendar-range]').textContent = translated('calendar.range', {start:shortDate.format(dates[0]),end:shortDate.format(dates[29])});
     const grid = root.querySelector('[data-calendar]'); grid.replaceChildren();
-    days.forEach(date => {
-      const count = counts.get(dayKey(date));
+    days.forEach((day,index) => {
+      const count = day.count;
       const level = count === 0 ? 0 : count === 1 ? 1 : count < 4 ? 2 : 3;
       const item = node('div'); item.setAttribute('role','listitem');
-      const square = node('span', String(date.getDate()), 'progress-day level-' + level + (count ? ' has-activity' : ''));
-      const label = translated('calendar.day', {date:dayDate.format(date),n:count});
+      const square = node('span', String(Number(day.date.slice(-2))), 'progress-day level-' + level + (count ? ' has-activity' : ''));
+      const label = translated('calendar.day', {date:dayDate.format(dates[index]),n:count});
       square.setAttribute('role','img'); square.setAttribute('aria-label',label); square.tabIndex = 0; square.title = label;
-      square.dataset.count = String(count); square.dataset.date = dayKey(date); item.append(square); grid.append(item);
+      square.dataset.count = String(count); square.dataset.date = day.date; item.append(square); grid.append(item);
     });
     root.querySelector('[data-calendar-region]').hidden = false;
-    root.querySelector('[data-calendar-empty]').hidden = Array.from(counts.values()).some(count => count > 0);
+    root.querySelector('[data-calendar-empty]').hidden = days.some(day => day.count > 0);
   }
   function render(event) {
     const summary = SH.store.summary(); const snapshot = SH.store.export();

@@ -10,16 +10,17 @@
     </div>
     <div class="account-identity">
       <p class="account-kicker">{{account.profile}}</p>
-      <h2 id="account-profile-name">{{account.name.value}}</h2>
-      <p>{{account.email.value}}</p>
+      <h2 id="account-profile-name" data-account-name>{{account.name.value}}</h2>
+      <p data-account-email>—</p>
     </div>
     <div class="account-status">
-      <span class="account-premium-label">PREMIUM</span>
+      <span class="account-premium-label">FREE</span>
       <strong>{{account.current.plan}}</strong>
       <button class="account-logout" type="button" data-account-logout>{{account.logout}}</button>
     </div>
   </section>
 
+  <p class="sh-card" data-legacy-data hidden>{{account.legacy.note}}</p>
   <div class="account-details-grid">
     <section class="sh-card account-info" aria-labelledby="account-info-title">
       <div class="account-section-heading">
@@ -28,16 +29,16 @@
       </div>
       <dl>
         <div><dt>{{account.name}}</dt><dd data-account-name>{{account.name.value}}</dd></div>
-        <div><dt>{{account.email}}</dt><dd>{{account.email.value}}</dd></div>
-        <div><dt>{{account.id}}</dt><dd>SH-PREMIUM-0001</dd></div>
-        <div><dt>{{account.joined}}</dt><dd>01/11/2026</dd></div>
+        <div><dt>{{account.email}}</dt><dd data-account-email>—</dd></div>
+        <div><dt>{{account.id}}</dt><dd data-account-id>—</dd></div>
+        <div><dt>{{account.joined}}</dt><dd data-account-joined>—</dd></div>
       </dl>
     </section>
 
     <section class="sh-card account-membership account-premium-frame" aria-labelledby="account-membership-title">
       <div class="account-section-heading">
         <div><h2 id="account-membership-title">{{account.membership.title}}</h2></div>
-        <span class="account-premium-label account-premium-label--small">PREMIUM</span>
+        <span class="account-premium-label account-premium-label--small">FREE</span>
       </div>
       <dl>
         <div><dt>{{account.status}}</dt><dd><span class="account-live-dot" aria-hidden="true"></span>{{account.status.active}}</dd></div>
@@ -53,16 +54,16 @@
       <div><h2 id="account-upgrade-title">{{account.upgrade.title}}</h2></div>
     </div>
     <div class="account-plan-grid">
-      <article class="sh-card account-plan">
+      <article class="sh-card account-plan account-plan--current">
         <p class="account-plan-type">{{account.plan.free}}</p>
         <h3>Free</h3>
-        <button class="button button-outline" type="button" data-plan-choice="Free">{{account.plan.choose}}</button>
+        <button class="button button-outline" type="button" disabled>{{account.plan.using}}</button>
       </article>
-      <article class="sh-card account-plan account-plan--premium account-plan--current">
-        <span class="account-current-badge">{{account.plan.current}}</span>
+      <article class="sh-card account-plan account-plan--premium">
+
         <p class="account-plan-type">PREMIUM</p>
         <h3>{{account.plan.month1}}</h3>
-        <button class="button" type="button" disabled>{{account.plan.using}}</button>
+        <button class="button" type="button" data-plan-choice="{{account.plan.month1}}">{{account.plan.choose}}</button>
       </article>
       <article class="sh-card account-plan account-plan--premium">
         <p class="account-plan-type">PREMIUM</p>
