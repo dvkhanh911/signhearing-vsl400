@@ -1,0 +1,21 @@
+{
+  "video.py": {
+    "original": "models\\fusion\\source\\fusion_vsl\\video.py",
+    "sha256_lf": "4d85a53659e7463f3a564649285d07cbfa030e4dae9770f2be8233f2ad66b728",
+    "change": "none except LF line endings"
+  },
+  "sampling.py": {
+    "original": "models\\fusion\\source\\fusion_vsl\\sampling.py",
+    "sha256_lf": "9f31009e81b36f21f6b90ed1cb033a957e8579b101bbcde9f81a05bb7c5f9aad",
+    "change": "none except LF line endings"
+  },
+  "landmark_encoder.py": {
+    "original": "models\\fusion\\source\\fusion_vsl\\landmark_encoder.py",
+    "sha256_lf": "aa4d5c4cae1a6b29e9fc8e5d245151d4b9997392063e79fc0282cc9247e66a91",
+    "change": "validation-only import"
+  },
+  "validation.py": {
+    "original": "space/models/fusion/source/fusion_vsl/rgb_encoder.py::_validate_clip",
+    "change": "only this pure validation function extracted; no encoder copied"
+  }
+}

@@ -42,12 +42,15 @@ Thumbs.db
 # Local datasets and model checkpoints
 data/*
 !data/curriculum.json
+!data/siformer-labels.json
 datasets/
 checkpoints/
 models/
 *.pt
 *.pth
 *.ckpt
+*.ckpt-*
+*.tflite
 *.onnx
 *.h5
 *.safetensors

@@ -232,7 +232,7 @@
   "features.camera.step2": "Choose Turn on camera and allow access to use the mirror, or use a physical mirror instead.",
   "features.camera.step3": "Compare handshape, location, palm orientation, movement and facial expression yourself.",
   "features.camera.step4": "Scroll down, check the items you feel you achieved and choose Save practice attempt; turn the camera off when finished.",
-  "features.camera.note": "No video recording, audio recording or image uploads. This is self-assessment; AI grading is not available.",
+  "features.camera.note": "The mirror camera never records or sends automatically. SiFormer recognition sends video only with your explicit consent.",
   "features.camera.action": "Open self-practice",
   "features.camera.alt": "Self-practice session with the sample video, speed controls and the camera mirror switched off.",
   "features.camera.caption": "Actual screenshot · Camera off. No physical webcam or simulated camera was used.",

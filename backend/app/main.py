@@ -5,7 +5,7 @@ from uuid import uuid4
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import auth, health, learning, progress
+from app.api import ai, auth, health, learning, progress
 from app.core.config import get_settings
 from app.core.errors import install_error_handlers
 from app.core.timing import measure, request_timings, server_timing
@@ -47,7 +47,7 @@ def create_app() -> FastAPI:
         with request_timings() as timings:
             with measure("app"):
                 if request.url.path == "/app" or request.url.path.startswith(
-                    ("/app/", "/api/auth/", "/api/learning/")
+                    ("/app/", "/api/auth/", "/api/learning/", "/api/ai/")
                 ):
                     # Some serverless adapters do not run ASGI lifespan. In that
                     # case still reuse one client for auth + data in this request.
@@ -59,7 +59,7 @@ def create_app() -> FastAPI:
         response.headers["X-Request-ID"] = request.state.request_id
         response.headers["X-Content-Type-Options"] = "nosniff"
         if request.url.path.startswith("/api/auth/") or request.url.path.startswith(
-            "/api/learning/"
+            ("/api/learning/", "/api/ai/")
         ):
             response.headers["Cache-Control"] = "private, no-store"
             response.headers["Vary"] = "Cookie, Authorization"
@@ -70,6 +70,7 @@ def create_app() -> FastAPI:
     app.include_router(auth.router)
     app.include_router(progress.router)
     app.include_router(learning.router)
+    app.include_router(ai.router)
     return app
 
 

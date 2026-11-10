@@ -1,6 +1,11 @@
 """Render practice choices and private mirror sessions using the shared content API."""
 
 from urllib.parse import urlsplit
+import json
+from pathlib import Path
+
+AI_LABELS = json.loads((Path(__file__).resolve().parents[2] / 'data/siformer-labels.json')
+                       .read_text(encoding='utf-8'))
 
 
 def context(request):
@@ -94,4 +99,5 @@ def context(request):
         'practice.parent.html': parent_link,
         'practice.back_url': request.url('/app/practice'),
         'practice.collection_notice.html': '',
+        'practice.ai.supported': str((sign.get('source_gloss') or sign['word']['vi']) in AI_LABELS).lower(),
     }

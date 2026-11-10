@@ -1,8 +1,19 @@
-# Module `practice` — Tự luyện, **không AI** (`/app/practice`, `/app/practice/{slug}`)
+# Module `practice` — Tự luyện và SiFormer (`/app/practice`, `/app/practice/{slug}`)
 
-Người học đặt video mẫu cạnh **gương camera** của chính mình, tự so sánh rồi tự đánh dấu. Chưa có AI chấm — chừa sẵn chỗ để sau này gắn AI mà không phải làm lại giao diện.
+Người học đặt video mẫu cạnh **gương camera**, tự so sánh và tự đánh dấu; một số từ hỗ trợ dự đoán tùy chọn bằng SiFormer.
 
 **Độ khó:** khó nhất (camera) · **Phụ thuộc:** shell.
+
+## Nhận diện SiFormer tùy chọn
+
+Trang `/app/practice/{slug}` có nút ghi hình và nhận diện bằng SiFormer
+CPU. Chỉ những từ khớp chính xác với 100 nhãn checkpoint mới được bật AI.
+Camera gương không tự ghi/gửi. Nút Ghi hình đếm ngược ba giây, lấy 30 ảnh ở 13 FPS rồi gửi để nhận diện;
+thông báo cạnh nút giải thích rõ việc gửi. Kết quả không tự ghi vào lịch sử checklist.
+
+Xem [audit, bảo mật, kết quả thật và hướng dẫn chạy](../../ai_inference/README.md).
+Các bảo đảm không gửi ảnh của phần gương/checklist dưới đây áp dụng khi không
+chủ động dùng phần AI. Test browser AI riêng nằm ở `frontend/tests/ai.browser.mjs`.
 
 ## File của bạn
 `page.html` (chọn ký hiệu), `session.html` (phiên luyện), `view.py` (đã kiểm tra slug → 404), `style.css`, `script.js`, `locales/*.json` (key `practice.*`).
@@ -14,7 +25,7 @@ Người học đặt video mẫu cạnh **gương camera** của chính mình, 
 - Trái: video mẫu (hoặc placeholder), tốc độ chậm, lặp.
 - Phải: **gương camera**. Chỉ bật khi người dùng bấm “Bật camera” (không tự bật). Hiển thị lật gương mặc định, nút tắt camera. Dừng track khi rời trang (`pagehide`).
 - Xử lý lỗi: từ chối quyền (`NotAllowedError`), không có camera (`NotFoundError`), trình duyệt không hỗ trợ → thông báo + vẫn luyện được bằng gương thật. Không spinner vô hạn.
-- **Không ghi hình, không tải lên, không thu âm.** Ghi rõ điều này trên giao diện.
+- Chỉ ghi và gửi video khi chọn Ghi hình; không thu âm.
 - Đếm ngược 3-2-1 (tùy chọn) rồi người học làm ký hiệu.
 - Checklist tự đánh giá 5 thông số (hình dạng tay, vị trí, hướng lòng bàn tay, chuyển động, nét mặt) → “Lưu lượt luyện” → `SH.store.addPractice(slug, {handshape:true,...})`.
 - Lịch sử lượt luyện của ký hiệu này (`SH.store.practiceLog()` lọc theo slug); “Thử lại”, “Ký hiệu tiếp theo”.
@@ -24,7 +35,7 @@ Người học đặt video mẫu cạnh **gương camera** của chính mình, 
 `navigator.mediaDevices.getUserMedia({video:true, audio:false})` cần `localhost` hoặc HTTPS. CSP đã cho `media-src 'self' blob:`. Gán stream bằng `video.srcObject`.
 
 ## Xong khi
-Chạy được trên Chrome/Edge laptop; từ chối camera không làm kẹt trang; không có request mạng nào gửi hình; VI/EN đủ; `python verify.py` đạt.
+Chạy được trên Chrome/Edge laptop; từ chối camera không làm kẹt trang; chỉ gửi video sau khi chọn Ghi hình; VI/EN đủ.
 
 ## Triển khai
 

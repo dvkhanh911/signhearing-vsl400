@@ -1,7 +1,7 @@
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import Field, field_validator
+from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy.engine import make_url
 
@@ -19,6 +19,26 @@ class Settings(BaseSettings):
     supabase_publishable_key: str = ""
     # Reuse the frontend/deployment public origin; Vercel system URLs are fallback.
     site_url: str = ""
+    ai_api_url: str = ""
+    ai_token_secret: SecretStr = SecretStr("")
+
+    @field_validator("ai_api_url")
+    @classmethod
+    def ai_origin(cls, value: str) -> str:
+        import re
+        from urllib.parse import urlsplit
+
+        if not value:
+            return ""
+        parsed = urlsplit(value)
+        local = parsed.scheme == "http" and parsed.hostname in ("127.0.0.1", "localhost")
+        if (not (parsed.scheme == "https" or local) or not parsed.hostname
+                or parsed.username or parsed.password or parsed.path not in ("", "/")
+                or parsed.query or parsed.fragment
+                or not re.fullmatch(r"[A-Za-z0-9.-]+", parsed.hostname)
+                or any(c in value for c in " ;'\"<>\r\n\t")):
+            raise ValueError("AI_API_URL must be an HTTPS origin or HTTP loopback origin")
+        return value.rstrip("/")
 
     @field_validator("supabase_url")
     @classmethod

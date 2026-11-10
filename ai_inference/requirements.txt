@@ -1,0 +1,7 @@
+# Windows CPU / TensorFlow worker. Keep MediaPipe in its own Python environment.
+tensorflow==2.20.0
+numpy==2.2.6
+pandas==2.3.3
+fastapi>=0.115,<1
+uvicorn>=0.34,<1
+pydantic-settings>=2.7,<3

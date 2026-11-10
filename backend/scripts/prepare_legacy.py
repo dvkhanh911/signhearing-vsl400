@@ -16,6 +16,7 @@ FILES = (
     "under-construction.html",
     "404.html",
     "data/curriculum.json",
+    "data/siformer-labels.json",
 )
 DIRECTORIES = ("app_shell", "modules", "partials", "locales", "static")
 

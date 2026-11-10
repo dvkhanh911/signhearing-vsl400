@@ -232,7 +232,7 @@
   "features.camera.step2": "Chọn Bật camera và cho phép truy cập nếu muốn dùng gương; có thể dùng gương thật.",
   "features.camera.step3": "Tự so sánh hình dạng tay, vị trí, hướng lòng bàn tay, chuyển động và nét mặt.",
   "features.camera.step4": "Cuộn xuống, đánh dấu các mục tự thấy đạt và chọn Lưu lượt luyện; tắt camera khi xong.",
-  "features.camera.note": "Không ghi hình, không thu âm, không gửi hình ảnh. Đây là tự đánh giá, chưa có AI chấm điểm.",
+  "features.camera.note": "Camera gương không tự ghi hay gửi hình ảnh. Nhận diện SiFormer chỉ gửi video khi bạn chủ động đồng ý.",
   "features.camera.action": "Mở phiên tự luyện",
   "features.camera.alt": "Phiên tự luyện với video mẫu, nút tốc độ và gương camera đang tắt.",
   "features.camera.caption": "Ảnh thật · Camera đang tắt. Ảnh chụp không dùng webcam hoặc camera giả.",

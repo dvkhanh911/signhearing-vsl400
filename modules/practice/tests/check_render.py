@@ -110,12 +110,14 @@ class PracticeChecks(unittest.TestCase):
         values = VIEW.context(request(signs=lambda *_: [], open_lessons=lambda: []))
         self.assertIn(DICTIONARIES['en']['practice.empty.content'], values['practice.groups.html'])
 
-    def test_no_capture_or_transport_apis(self):
+    def test_ai_consent_and_existing_self_assessment_remain_separate(self):
         script = (ROOT / 'modules/practice/script.js').read_text(encoding='utf-8')
-        for forbidden in ('MediaRecorder', 'canvas', 'fetch(', 'XMLHttpRequest', 'localStorage', 'sessionStorage', 'markSignSeen', 'setLessonState'):
+        for forbidden in ('XMLHttpRequest', 'localStorage', 'sessionStorage', 'markSignSeen', 'setLessonState'):
             self.assertNotIn(forbidden, script)
         self.assertIn('audio: false', script)
         self.assertIn("window.addEventListener('pagehide'", script)
+        self.assertEqual('true', VIEW.context(request(slug='an'))['practice.ai.supported'])
+        self.assertEqual('false', VIEW.context(request(slug='xin-chao'))['practice.ai.supported'])
 
 
 if __name__ == '__main__':

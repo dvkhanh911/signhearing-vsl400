@@ -8,25 +8,32 @@
       <div class="practice-stage">{{practice.reference.html}}</div>
       {{practice.video_controls.html}}
     </section>
-    <section class="sh-card practice-panel" aria-labelledby="practice-camera-title">
+    <section class="sh-card practice-panel" data-ai data-ai-supported="{{practice.ai.supported}}" aria-labelledby="practice-camera-title">
       <header class="practice-panel-head">
         <h2 id="practice-camera-title">{{practice.camera.title}}</h2>
         <span class="practice-camera-live" data-camera-live hidden><span aria-hidden="true"></span>{{practice.camera.live}}</span>
       </header>
       <div class="practice-stage practice-mirror-stage">
         <video class="practice-is-mirrored" data-camera muted playsinline autoplay hidden aria-label="{{practice.camera.label}}"></video>
+        <div class="practice-camera-guide" data-camera-guide aria-hidden="true" hidden></div>
         <div class="practice-camera-off" data-camera-off>
           <strong>{{practice.camera.off.title}}</strong>
           <p>{{practice.camera.privacy}}</p>
         </div>
         <div class="practice-countdown" data-countdown role="status" aria-live="assertive" aria-atomic="true" hidden></div>
+        <div class="practice-record-countdown" data-ai-countdown role="status" aria-live="assertive" aria-atomic="true" hidden><span>{{practice.ai.prepare}}</span><strong data-ai-countdown-number></strong></div>
+        <div class="practice-recording" data-ai-recording role="status" hidden><span aria-hidden="true"></span>{{practice.ai.recording_short}}</div>
       </div>
       <p class="practice-camera-status" data-camera-status role="status" aria-live="polite">{{practice.camera.off}}</p>
       <div class="practice-camera-controls" data-camera-controls hidden>
         <button class="button" type="button" data-camera-start>{{practice.camera.start}}</button>
         <button class="button button-outline" type="button" data-camera-stop hidden>{{practice.camera.stop}}</button>
+        <button class="button button-outline" type="button" data-ai-record disabled aria-describedby="practice-record-notice">{{practice.ai.record}}</button>
         <button class="sh-chip" type="button" data-mirror aria-pressed="true" disabled>{{practice.camera.mirror}}</button>
       </div>
+      <p class="practice-camera-status" id="practice-record-notice">{{practice.ai.initial}}</p>
+      <p class="practice-camera-status" data-ai-status role="status" aria-live="polite"></p>
+      <div class="practice-result" data-ai-result role="status" aria-live="polite" hidden></div>
     </section>
   </div>
   <noscript><p class="practice-no-js">{{practice.no_js}}</p></noscript>

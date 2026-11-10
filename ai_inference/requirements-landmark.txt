@@ -1,0 +1,9 @@
+# Matches the preprocessing recipe of the existing working SiFormer demo.
+mediapipe==0.10.14
+numpy==1.26.4
+opencv-contrib-python==4.11.0.86
+protobuf==4.25.8
+jax==0.4.35
+jaxlib==0.4.35
+scipy==1.14.1
+Pillow==13.0.0

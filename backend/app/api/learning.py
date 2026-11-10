@@ -2,6 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse, Response
 
 from app.api.progress import snapshot_for
+from app.core.config import get_settings
 from app.core.timing import measure
 from app.services import legacy
 from app.services import supabase as sb
@@ -19,6 +20,8 @@ def page_response(request: Request, path: str, initial_state: dict | None = None
     locale = locale_for(request)
     # Unknown paths never enter template URLs.
     canonical = path if path == "/login" or legacy.app_modules.is_app_path(path) else "/404"
+    ai_origin = get_settings().ai_api_url if path.startswith("/app/practice/") else ""
+    connect_policy = "connect-src 'self'" + (" " + ai_origin if ai_origin else "") + ";"
     with measure("render"):
         body, status = legacy.render(locale, canonical, initial_state=initial_state)
     response = HTMLResponse(
@@ -34,7 +37,7 @@ def page_response(request: Request, path: str, initial_state: dict | None = None
             "Content-Security-Policy": (
                 "default-src 'self'; script-src 'self'; style-src 'self'; "
                 "img-src 'self'; media-src 'self' blob:; frame-ancestors 'none'; "
-                "base-uri 'self'; form-action 'none'"
+                "base-uri 'self'; form-action 'none'; " + connect_policy
             ),
         },
     )
